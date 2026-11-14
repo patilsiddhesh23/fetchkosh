@@ -43,6 +43,7 @@ h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -0.01em; }
 p { margin: 0; }
 .lede { font-size: 1.2rem; max-width: 44ch; color: var(--text); }
 .num { font-variant-numeric: tabular-nums; }
+.nb { white-space: nowrap; }
 
 /* ---------- Top bar ---------- */
 .top { display: flex; align-items: center; gap: 28px; padding: 22px 0; }
@@ -204,7 +205,11 @@ footer .brand img { width: 26px; height: 26px; }
   .demo-grid { grid-template-columns: minmax(0, 1fr); }
   .srcs { flex-direction: row; height: auto; width: 280px; margin: 0 auto; justify-content: space-between; }
   .src { grid-template-columns: 1fr; width: 136px; text-align: center; row-gap: 6px; justify-items: center; }
-  .src-line { justify-content: center; flex-wrap: wrap; gap: 6px 10px; }
+  .srcs { align-items: flex-start; }
+  .src > div { display: flex; flex-direction: column; align-items: center; }
+  .src-line { display: contents; }
+  .src-line .switch { order: 3; margin-top: 8px; }
+  .src .spd { order: 2; }
   .lines { height: 120px; margin-top: 10px; }
   .lines .h { display: none; }
   .lines .v { display: block; width: 280px; height: 120px; margin: 0 auto; }
@@ -227,6 +232,12 @@ footer .brand img { width: 26px; height: 26px; }
   .phones .phone { border-radius: 26px; padding: 5px; }
   .phones .phone img { border-radius: 21px; }
   .tvset .phone { width: 120px; right: 0; border-radius: 20px; padding: 4px; }
+  .get { margin-top: 64px; padding: 56px 0; }
+  .get-grid { margin-top: 28px; }
+  .get-grid > div { padding: 24px 0; }
+  .smart { margin-top: 8px; }
+  footer .wrap { flex-direction: column; align-items: flex-start; gap: 12px; }
+  footer .brand { margin-right: 0; }
   .tvset .phone img { border-radius: 16px; }
   .small-things { grid-template-columns: 1fr; }
   .map, .qr { display: none; }
@@ -263,7 +274,7 @@ footer .brand img { width: 26px; height: 26px; }
 <!-- ============================ Hero ============================ -->
 <section class="wrap hero">
   <div class="hero-text">
-    <h1>Wi-Fi and mobile data, on the same download.</h1>
+    <h1><span class="nb">Wi-Fi</span> and mobile data, on the same download.</h1>
     <div class="hero-side">
       <p class="lede">FetchKosh splits a file into parts and pulls them over both connections at once, so big files finish sooner. It also plays your files on your TV and moves them between your phone and PC.</p>
       <div class="actions">
@@ -284,7 +295,7 @@ footer .brand img { width: 26px; height: 26px; }
       <div class="srcs">
         <div class="src wifi">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2.5 9.5a14 14 0 0 1 19 0M5.8 13a9.2 9.2 0 0 1 12.4 0M9 16.4a4.6 4.6 0 0 1 6 0"/><circle cx="12" cy="19.6" r="1.1" fill="currentColor"/></svg>
-          <div><b>Wi-Fi</b><span class="spd num" id="spd-wifi">5.2 MB/s</span></div>
+          <div><b><span class="nb">Wi-Fi</span></b><span class="spd num" id="spd-wifi">5.2 MB/s</span></div>
         </div>
         <div class="src mob" id="src-mob">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 20v-3M10 20v-7M15 20V9M20 20V4"/></svg>
@@ -321,7 +332,7 @@ footer .brand img { width: 26px; height: 26px; }
         <div class="file-stats num"><span id="f-size">0 MB of 5.8 GB</span><span id="f-left">10m 24s left</span></div>
       </div>
     </div>
-    <p class="demo-note">A simulation with example speeds, sped up. Switch mobile data off to see the difference. Your speeds depend on your Wi-Fi and your mobile network.</p>
+    <p class="demo-note">A simulation with example speeds, sped up. Switch mobile data off to see the difference. Your speeds depend on your <span class="nb">Wi-Fi</span> and your mobile network.</p>
   </div>
 </section>
 
@@ -333,10 +344,10 @@ footer .brand img { width: 26px; height: 26px; }
       <h2>Your phone has two connections. Use both.</h2>
       <p>Paste a link, or share one to FetchKosh from any app. The speed card at the top shows what each connection is giving you and the total.</p>
       <ul class="points">
-        <li><b>You set the limit.</b> Give mobile data a daily cap (500 MB to 5 GB), or switch to Wi-Fi only with one tap.</li>
+        <li><b>You set the limit.</b> Give mobile data a daily cap (500 MB to 5 GB), or switch to <span class="nb">Wi-Fi</span> only with one tap.</li>
         <li><b>It keeps going.</b> Downloads carry on with the screen off, and resume after a dropped network or a restart.</li>
         <li><b>Download tonight.</b> Mark a file for tonight and it runs in your night data window, only while charging if you like.</li>
-        <li><b>Speed test built in.</b> Test Wi-Fi and mobile data, each alone and both together.</li>
+        <li><b>Speed test built in.</b> Test <span class="nb">Wi-Fi</span> and mobile data, each alone and both together.</li>
       </ul>
     </div>
     <div class="phones">
@@ -352,7 +363,7 @@ footer .brand img { width: 26px; height: 26px; }
     <div class="copy">
       <div class="where"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="12.5" rx="2"/><path d="M8.5 20.5h7"/></svg>On your Android TV</div>
       <h2>Watch it on the TV. Your phone is the remote.</h2>
-      <p>Videos, photos and music play on the TV straight from your phone or PC, over your home Wi-Fi. Full quality, instant skipping, and no internet needed.</p>
+      <p>Videos, photos and music play on the TV straight from your phone or PC, over your home <span class="nb">Wi-Fi</span>. Full quality, instant skipping, and no internet needed.</p>
       <ul class="points">
         <li><b>Scan to connect.</b> The TV shows a code; scan it with your phone. Nothing to type.</li>
         <li><b>A real remote.</b> Play, pause, drag to any point, skip 10 seconds, volume, audio track and subtitles.</li>
@@ -373,7 +384,7 @@ footer .brand img { width: 26px; height: 26px; }
     <div class="copy">
       <div class="where"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4.5" width="16" height="11" rx="1.6"/><path d="M2 19.5h20"/></svg>On your Windows PC</div>
       <h2>Every connection the PC has, and your phone's 5G too.</h2>
-      <p>FetchKosh for Windows downloads over Ethernet, Wi-Fi and USB tethering together. With the phone app on the same Wi-Fi, your phone's mobile data joins in as one more connection.</p>
+      <p>FetchKosh for Windows downloads over Ethernet, <span class="nb">Wi-Fi</span> and USB tethering together. With the phone app on the same <span class="nb">Wi-Fi</span>, your phone's mobile data joins in as one more connection.</p>
       <ul class="points">
         <li><b>No hotspot to set up.</b> The PC finds your phone by itself. Pair once with a code.</li>
         <li><b>Send files both ways.</b> From any phone app: Share, then Send to PC. No cable, no mobile data used.</li>
@@ -388,7 +399,7 @@ footer .brand img { width: 26px; height: 26px; }
           <div class="board">
             <ul>
               <li>Ethernet <span class="num" id="pc-eth">6.1 MB/s</span></li>
-              <li>Wi-Fi <span class="num" id="pc-wifi">3.5 MB/s</span></li>
+              <li><span class="nb">Wi-Fi</span> <span class="num" id="pc-wifi">3.5 MB/s</span></li>
               <li>Phone 5G <span class="num" id="pc-5g">2.8 MB/s</span></li>
             </ul>
             <div class="mid">
@@ -417,7 +428,7 @@ footer .brand img { width: 26px; height: 26px; }
 
 <!-- ============================ Together ============================ -->
 <section class="wrap part" id="together">
-  <h2>Three apps that find each other on your Wi-Fi.</h2>
+  <h2>Three apps that find each other on your <span class="nb">Wi-Fi</span>.</h2>
   <div class="together">
     <svg class="map" viewBox="0 0 620 440" role="img" aria-label="The phone, the PC and the TV connect to each other over home Wi-Fi">
       <path id="m-pt" class="link" d="M150 318 C170 210 230 140 290 112"/>
@@ -457,7 +468,7 @@ footer .brand img { width: 26px; height: 26px; }
     <div><h3>Pause and resume</h3><p>Even after closing the app or restarting the phone. Nothing starts over.</p></div>
     <div><h3>A queue you control</h3><p>Choose how many downloads run at once and drag the rest into order.</p></div>
     <div><h3>Google Drive links</h3><p>Big shared files download directly, without the "can't scan this file for viruses" page.</p></div>
-    <div><h3>How much faster was it?</h3><p>After a download, see the time saved over Wi-Fi alone and share it as a picture.</p></div>
+    <div><h3>How much faster was it?</h3><p>After a download, see the time saved over <span class="nb">Wi-Fi</span> alone and share it as a picture.</p></div>
     <div><h3>Dark and light</h3><p>One switch at the top of the phone app.</p></div>
     <div><h3>Private</h3><p>No account or sign-in. Your downloads and settings stay on your devices, and a TV or PC connects only after you approve it.</p></div>
   </div>
@@ -470,7 +481,7 @@ footer .brand img { width: 26px; height: 26px; }
     <div class="get-grid">
       <div>
         <h3>Android phone</h3>
-        <p>Android 9 or newer. Downloads over Wi-Fi and mobile data together.</p>
+        <p>Android 9 or newer. Downloads over <span class="nb">Wi-Fi</span> and mobile data together.</p>
         <a class="btn" href="https://play.google.com/store/apps/details?id=com.kosh.fetchkosh">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 5 3.5Z"/></svg>
           Get it on Google Play</a>
@@ -560,7 +571,7 @@ footer .brand img { width: 26px; height: 26px; }
     if (rest > 0) {           // just finished: show how long it took
       $("f-bar").style.width = "100%";
       $("f-size").textContent = size(f.mb) + " downloaded";
-      $("f-left").innerHTML = '<span class="file-done">Done in ' + time(took) + "</span>  Wi-Fi alone: " + time(wifiOnly);
+      $("f-left").innerHTML = '<span class="file-done">Done in ' + time(took) + "</span>  <span class=\"nb\">Wi-Fi alone: " + time(wifiOnly) + "</span>";
       return;
     }
     $("spd-wifi").textContent = w.toFixed(1) + " MB/s";
