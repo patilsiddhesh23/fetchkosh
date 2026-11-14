@@ -46,7 +46,8 @@ p { margin: 0; }
 .nb { white-space: nowrap; }
 
 /* ---------- Top bar ---------- */
-.top { display: flex; align-items: center; gap: 28px; padding: 22px 0; }
+.top { display: flex; align-items: center; gap: 28px; }
+header.top { padding-top: 24px; padding-bottom: 22px; }
 .brand { display: flex; align-items: center; gap: 11px; font: 650 1.25rem var(--display); color: var(--bright); text-decoration: none; letter-spacing: -0.01em; }
 .brand img { width: 34px; height: 34px; }
 .top nav { margin-left: auto; display: flex; gap: 26px; }
@@ -61,7 +62,7 @@ p { margin: 0; }
 .btn svg { width: 19px; height: 19px; flex: none; }
 
 /* ---------- Hero ---------- */
-.hero { padding: 54px 0 0; }
+.hero { padding-top: 54px; }
 .hero-text { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
 .hero-side { padding-top: 6px; }
 .hero-side .lede { margin-bottom: 26px; }
@@ -103,6 +104,25 @@ p { margin: 0; }
 .bar i { display: block; height: 100%; width: 0; border-radius: 4px; background: linear-gradient(90deg, var(--purple), var(--lav)); }
 .file-stats { display: flex; justify-content: space-between; gap: 14px; color: var(--muted); font-size: 0.95rem; }
 .file-done { color: var(--lav); }
+.demo-fit { position: relative; }
+.demo.fitted .demo-grid { position: absolute; left: 0; top: 0; width: 716px; grid-template-columns: 214px 200px 1fr; transform-origin: 0 0; font-size: 22px; }
+.demo.fitted .srcs, .demo.fitted .lines { height: 160px; }
+.demo.fitted .lines svg { width: 200px; height: 160px; }
+.demo.fitted .lines img { width: 54px; height: 54px; }
+.demo.fitted .src { grid-template-columns: 30px 1fr; column-gap: 10px; }
+.demo.fitted .src b { font-size: 21px; }
+.demo.fitted .src svg { width: 32px; height: 32px; }
+.demo.fitted .src .spd { font-size: 21px; }
+.demo.fitted .src-line { gap: 8px; }
+.demo.fitted .switch { width: 50px; height: 30px; border-radius: 15px; }
+.demo.fitted .switch::after { top: 3px; left: 23px; width: 24px; height: 24px; }
+.demo.fitted .switch[aria-checked="false"]::after { left: 3px; }
+.demo.fitted .file { padding: 22px; border-radius: 20px; }
+.demo.fitted .file-name { font-size: 19px; }
+.demo.fitted .total { font-size: 44px; }
+.demo.fitted .total small { font-size: 20px; }
+.demo.fitted .bar { height: 10px; margin: 18px 0 12px; }
+.demo.fitted .file-stats { font-size: 17px; white-space: nowrap; }
 .demo-note { margin-top: 18px; color: var(--muted); font-size: 0.88rem; }
 
 /* ---------- Sections ---------- */
@@ -204,18 +224,6 @@ footer .brand img { width: 26px; height: 26px; }
 @media (max-width: 980px) {
   .hero-text, .split, .together { grid-template-columns: minmax(0, 1fr); gap: 36px; }
   .split.flip > .copy { order: 0; }
-  .demo-grid { grid-template-columns: minmax(0, 1fr); }
-  .srcs { flex-direction: row; height: auto; width: 280px; margin: 0 auto; justify-content: space-between; }
-  .src { grid-template-columns: 1fr; width: 136px; text-align: center; row-gap: 6px; justify-items: center; }
-  .srcs { align-items: flex-start; }
-  .src > div { display: flex; flex-direction: column; align-items: center; }
-  .src-line { display: contents; }
-  .src-line .switch { order: 3; margin-top: 8px; }
-  .src .spd { order: 2; }
-  .lines { height: 120px; margin-top: 10px; }
-  .lines .h { display: none; }
-  .lines .v { display: block; width: 280px; height: 120px; margin: 0 auto; }
-  .lines img { top: 62px; width: 50px; height: 50px; }
   .get-grid { grid-template-columns: 1fr; }
   .get-grid > div { padding: 30px 0; border-left: 0; border-top: 1px solid var(--line); }
   .get-grid > div:first-child { border-top: 0; padding-top: 0; }
@@ -226,10 +234,10 @@ footer .brand img { width: 26px; height: 26px; }
   body { font-size: 16px; }
   .wrap { padding: 0 20px; }
   .top nav { display: none; }
+  header.top { padding-top: 20px; padding-bottom: 18px; }
   .top .btn { margin-left: auto; }
   .hero { padding-top: 26px; }
   .demo { padding: 22px 18px 18px; border-radius: 20px; margin-top: 40px; }
-  .total { font-size: 2rem; }
   .phones { gap: 12px; }
   .phones .phone { border-radius: 26px; padding: 5px; }
   .phones .phone img { border-radius: 21px; }
@@ -284,6 +292,7 @@ footer .brand img { width: 26px; height: 26px; }
 
   <!-- The live demo. Speeds and files are examples; edit them in the script at the bottom. -->
   <div class="demo" id="demo">
+    <div class="demo-fit" id="demo-fit">
     <div class="demo-grid">
       <div class="srcs">
         <div class="src wifi">
@@ -324,6 +333,7 @@ footer .brand img { width: 26px; height: 26px; }
         <div class="bar"><i id="f-bar"></i></div>
         <div class="file-stats num"><span id="f-size">0 MB of 5.8 GB</span><span id="f-left">10m 24s left</span></div>
       </div>
+    </div>
     </div>
     <p class="demo-note">A simulation with example speeds, sped up. Switch mobile data off to see the difference. Your speeds depend on your <span class="nb">Wi-Fi</span> and your mobile network.</p>
   </div>
@@ -622,6 +632,21 @@ footer .brand img { width: 26px; height: 26px; }
     pcDone += pcShow() * 0.1 * 20;
     if (pcDone >= PC_FILES[pcFile].mb) { pcDone = PC_FILES[pcFile].mb; pcRest = 3; pcShow(); }
   }
+
+  // Narrow screens: the demo keeps its landscape layout, drawn 716 px wide and scaled to fit
+  var demoFit = $("demo-fit"), demoGrid = demoFit.firstElementChild;
+  function fitDemo() {
+    var w = demoFit.clientWidth, small = w < 860;
+    demo.classList.toggle("fitted", small);
+    if (small) {
+      var k = w / 716;
+      demoGrid.style.transform = "scale(" + k + ")";
+      demoFit.style.height = Math.ceil(demoGrid.offsetHeight * k) + "px";
+    } else { demoGrid.style.transform = ""; demoFit.style.height = ""; }
+  }
+  fitDemo();
+  if (window.ResizeObserver) new ResizeObserver(fitDemo).observe(demoFit); else window.addEventListener("resize", fitDemo);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitDemo);
 
   // Scale the laptop (drawn 600 px wide) to the space it has
   var fit = $("laptop-fit"), lap = $("laptop");
