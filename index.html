@@ -3,90 +3,584 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FetchKosh: download for Windows and Android</title>
-<meta name="description" content="FetchKosh downloads one file over Wi-Fi and mobile data at the same time, plays your files on your TV and sends files between your phone and PC. Free, no account, no ads.">
+<title>FetchKosh: download over Wi-Fi and mobile data together</title>
+<meta name="description" content="FetchKosh downloads one file over Wi-Fi and mobile data at the same time, plays your files on your Android TV, and sends files between your phone and Windows PC. Free, no ads, no account.">
+<meta property="og:title" content="FetchKosh">
+<meta property="og:description" content="One download over Wi-Fi and mobile data together. For Android, Android TV and Windows.">
+<meta property="og:image" content="https://fetchkosh.pages.dev/logo.png">
+<meta name="theme-color" content="#111111">
 <link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:wght@400..600&display=swap" rel="stylesheet">
 <style>
+/* ---------- Colours and type: change these to restyle the whole page ---------- */
 :root {
-  --bg: #F6F4F9; --card: #FFFFFF; --line: #E4DFEA; --text: #2B2733; --title: #15121A; --muted: #6B6474;
-  --button: #8044C6; --on-button: #FFFFFF; --accent: #9257D6;
-}
-@media (prefers-color-scheme: dark) {
-  :root { --bg: #111111; --card: #101012; --line: #202023; --text: #D8D8D8; --title: #F7F3FB; --muted: #A9A1B1; --accent: #E2CFF6; }
+  --ink: #111111;        /* page background */
+  --panel: #17141b;      /* raised areas */
+  --panel-2: #1d1923;
+  --line: #2b2632;       /* borders */
+  --purple: #8044C6;     /* buttons, the Wi-Fi line */
+  --lav: #E2CFF6;        /* progress, the mobile data line */
+  --text: #D8D8D8;
+  --bright: #f3f0f7;     /* headings */
+  --muted: #9d95a8;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+  --wrap: 1160px;
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-main { max-width: 760px; margin: 0 auto; padding: 48px 16px 40px; }
-header { text-align: center; }
-header img { width: 96px; height: 96px; }
-h1 { color: var(--title); font-size: 40px; line-height: 1.15; margin: 12px 0 8px; font-weight: 700; }
-.tag { color: var(--muted); font-size: 18px; margin: 0 auto; max-width: 560px; }
-.get { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 36px 0 12px; }
-.card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 10px; }
-.card h2 { color: var(--title); font-size: 20px; margin: 0; font-weight: 600; }
-.card p { margin: 0; color: var(--muted); font-size: 15px; }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 20px; border-radius: 14px;
-       background: var(--button); color: var(--on-button); font-weight: 600; font-size: 16px; text-decoration: none; margin-top: auto; }
-.btn:hover { filter: brightness(1.1); }
-.btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.small { font-size: 13px; color: var(--muted); }
-.small a, footer a { color: var(--accent); }
-.note { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 18px; font-size: 14px; color: var(--muted); }
-.note b { color: var(--title); font-weight: 600; }
-.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 40px; }
-.features div { padding: 4px 2px; }
-.features h3 { color: var(--title); font-size: 16px; margin: 0 0 4px; font-weight: 600; }
-.features p { margin: 0; font-size: 15px; color: var(--muted); }
-footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); text-align: center; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--ink); color: var(--text); font: 400 17px/1.55 var(--body); -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--lav); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 28px; }
+h1, h2, h3 { font-family: var(--display); color: var(--bright); margin: 0; letter-spacing: -0.02em; }
+h1 { font-size: clamp(2.7rem, 6.6vw, 5.5rem); line-height: 0.96; font-weight: 700; max-width: 13ch; }
+h2 { font-size: clamp(1.9rem, 3.6vw, 3rem); line-height: 1.04; font-weight: 650; max-width: 18ch; }
+h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -0.01em; }
+p { margin: 0; }
+.lede { font-size: 1.2rem; max-width: 44ch; color: var(--text); }
+.num { font-variant-numeric: tabular-nums; }
+
+/* ---------- Top bar ---------- */
+.top { display: flex; align-items: center; gap: 28px; padding: 22px 0; }
+.brand { display: flex; align-items: center; gap: 11px; font: 650 1.25rem var(--display); color: var(--bright); text-decoration: none; letter-spacing: -0.01em; }
+.brand img { width: 34px; height: 34px; }
+.top nav { margin-left: auto; display: flex; gap: 26px; }
+.top nav a { color: var(--muted); text-decoration: none; font-size: 0.97rem; }
+.top nav a:hover { color: var(--bright); }
+.btn { display: inline-flex; align-items: center; gap: 10px; background: var(--purple); color: #fff; text-decoration: none;
+  font: 600 1rem var(--body); padding: 13px 20px; border-radius: 12px; border: 0; cursor: pointer; }
+.btn:hover { background: #8d52d4; }
+.btn.small { padding: 9px 15px; font-size: 0.93rem; border-radius: 10px; }
+.btn.quiet { background: transparent; color: var(--bright); box-shadow: inset 0 0 0 1px #4a4257; }
+.btn.quiet:hover { background: var(--panel-2); }
+.btn svg { width: 19px; height: 19px; flex: none; }
+
+/* ---------- Hero ---------- */
+.hero { padding: 54px 0 0; }
+.hero-text { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px; align-items: end; }
+.hero-side { padding-bottom: 8px; }
+.hero-side .lede { margin-bottom: 26px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.fine { color: var(--muted); font-size: 0.9rem; margin-top: 14px; }
+
+/* The live demo: two connections flow into one file */
+.demo { margin-top: 56px; background: var(--panel); border: 1px solid var(--line); border-radius: 26px; padding: 30px 34px 22px; }
+.demo-grid { display: grid; grid-template-columns: minmax(210px, 1fr) 300px minmax(300px, 1.5fr); align-items: center; }
+.srcs { display: flex; flex-direction: column; justify-content: space-around; height: 220px; }
+.src { display: grid; grid-template-columns: 30px 1fr; column-gap: 14px; align-items: center; }
+.src svg { width: 28px; height: 28px; color: var(--purple); }
+.src.mob svg { color: var(--lav); }
+.src b { display: block; color: var(--bright); font-weight: 600; }
+.src .spd { color: var(--muted); font-size: 0.97rem; }
+.src.off svg, .src.off b { color: #6a6272; }
+.src-line { display: flex; align-items: center; gap: 12px; }
+.switch { width: 44px; height: 26px; border-radius: 13px; border: 0; background: var(--purple); position: relative; cursor: pointer; flex: none; transition: background .15s; }
+.switch::after { content: ""; position: absolute; top: 3px; left: 21px; width: 20px; height: 20px; border-radius: 50%; background: #fff; transition: left .15s; }
+.switch[aria-checked="false"] { background: #3a3442; }
+.switch[aria-checked="false"]::after { left: 3px; background: #b9b2c2; }
+.lines { position: relative; height: 220px; }
+.lines svg { width: 300px; height: 220px; display: block; }
+.lines .v { display: none; }
+.lines img { position: absolute; left: 50%; top: 50%; width: 58px; height: 58px; transform: translate(-50%, -50%); }
+.path { fill: none; stroke-width: 2; stroke-linecap: round; }
+.path.wifi { stroke: var(--purple); }
+.path.mob { stroke: var(--lav); opacity: .8; }
+.path.out { stroke: #6f6480; }
+.dot.wifi { fill: #a877e6; } .dot.mob { fill: var(--lav); } .dot.out { fill: #fff; }
+.mob-off .path.mob { stroke: #3a3442; opacity: 1; }
+.mob-off .dot.mob { display: none; }
+.file { min-width: 0; background: var(--ink); border: 1px solid var(--line); border-radius: 18px; padding: 20px 22px; }
+.file-top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; min-width: 0; }
+.file-name { color: var(--bright); font-weight: 600; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.total { font: 700 2.5rem/1 var(--display); color: var(--bright); white-space: nowrap; letter-spacing: -0.02em; }
+.total small { font: 500 1rem var(--body); color: var(--muted); letter-spacing: 0; margin-left: 4px; }
+.bar { height: 8px; border-radius: 4px; background: #2a2630; margin: 16px 0 10px; overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0; border-radius: 4px; background: linear-gradient(90deg, var(--purple), var(--lav)); }
+.file-stats { display: flex; justify-content: space-between; gap: 14px; color: var(--muted); font-size: 0.95rem; }
+.file-done { color: var(--lav); }
+.demo-note { margin-top: 18px; color: var(--muted); font-size: 0.88rem; }
+
+/* ---------- Sections ---------- */
+section.part { padding: 120px 0 0; }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.split.flip > .copy { order: 2; }
+.copy h2 { margin-bottom: 20px; }
+.copy > p { max-width: 46ch; }
+.points { list-style: none; padding: 0; margin: 28px 0 0; max-width: 46ch; }
+.points li { padding: 14px 0; border-top: 1px solid var(--line); }
+.points li b { color: var(--bright); font-weight: 600; }
+.where { display: inline-flex; align-items: center; gap: 9px; color: var(--lav); font-weight: 500; margin-bottom: 16px; }
+.where svg { width: 22px; height: 22px; }
+
+/* Device frames */
+.phone { width: 270px; border-radius: 38px; padding: 8px; background: #25212b; box-shadow: 0 0 0 1px #3a3442, 0 30px 60px -20px #000; }
+.phone img { border-radius: 30px; width: 100%; height: auto; }
+.phones { position: relative; height: 560px; }
+.phones .phone:nth-child(1) { position: absolute; left: 4%; top: 0; z-index: 2; }
+.phones .phone:nth-child(2) { position: absolute; left: 44%; top: 70px; width: 236px; opacity: .92; }
+.tvset { position: relative; padding-bottom: 60px; }
+.tv { border-radius: 12px; padding: 9px; background: #1c1a20; box-shadow: 0 0 0 1px #37323e, 0 40px 70px -30px #000; }
+.tv img { border-radius: 4px; }
+.tv-stand { width: 34%; height: 9px; margin: 0 auto; background: #1c1a20; border-radius: 0 0 8px 8px; box-shadow: 0 0 0 1px #37323e; }
+.tvset .phone { position: absolute; right: -6px; bottom: 0; width: 176px; border-radius: 28px; padding: 6px; }
+.tvset .phone img { border-radius: 22px; }
+
+/* The Windows app, drawn in HTML (it is black and white, like the real one) */
+.win { background: #0b0b0c; border: 1px solid #2a2a2d; border-radius: 10px; box-shadow: 0 40px 70px -30px #000; color: #f5f5f6; font-size: 13.5px; overflow: hidden; }
+.win-bar { display: flex; align-items: center; gap: 9px; padding: 9px 12px; color: #c9c9cc; font-size: 12.5px; }
+.win-bar img { width: 16px; height: 16px; }
+.win-bar span { margin-left: auto; letter-spacing: 12px; color: #8e8e93; font-size: 13px; }
+.win-tabs { display: flex; gap: 8px; padding: 6px 16px 14px; }
+.win-tabs i { font-style: normal; padding: 5px 14px; border-radius: 16px; box-shadow: inset 0 0 0 1px #2a2a2d; }
+.win-tabs i.on { background: #f5f5f6; color: #0b0b0c; font-weight: 600; box-shadow: none; }
+.board { margin: 0 16px; border: 1px solid #2a2a2d; border-radius: 12px; display: grid; grid-template-columns: 1fr 150px 1fr; align-items: center; padding: 6px 18px; }
+.board ul { list-style: none; margin: 0; padding: 0; height: 150px; display: flex; flex-direction: column; justify-content: space-around; }
+.board li { display: flex; justify-content: space-between; gap: 10px; white-space: nowrap; }
+.board li span { color: #a1a1a6; }
+.board .mid { position: relative; height: 150px; }
+.board .mid svg { width: 150px; height: 150px; }
+.board .mid img { position: absolute; left: 50%; top: 50%; width: 40px; height: 40px; transform: translate(-50%, -50%); }
+.board .sum { text-align: right; }
+.board .sum b { font: 700 2rem/1 var(--display); display: block; }
+.board .sum span { color: #a1a1a6; }
+.win-row { margin: 12px 16px 16px; padding: 12px 14px; border: 1px solid #2a2a2d; border-radius: 12px; }
+.win-row div { display: flex; justify-content: space-between; gap: 12px; }
+.win-row .wbar { height: 5px; border-radius: 3px; background: #2a2a2d; margin: 9px 0 7px; }
+.win-row .wbar i { display: block; width: 62%; height: 100%; border-radius: 3px; background: #f5f5f6; }
+.win-row span { color: #a1a1a6; }
+
+/* ---------- Together ---------- */
+.together { margin-top: 44px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+.map { width: 100%; height: auto; }
+.map .link { fill: none; stroke: #4b4358; stroke-width: 1.6; stroke-dasharray: 1 7; stroke-linecap: round; }
+.map .dev { fill: none; stroke: var(--bright); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.map .plate { fill: var(--panel); stroke: var(--line); }
+.map text { fill: var(--muted); font: 500 15px var(--body); text-anchor: middle; }
+.map text.name { fill: var(--bright); font: 600 17px var(--display); }
+.ways { list-style: none; margin: 0; padding: 0; }
+.ways li { display: grid; grid-template-columns: 14px 1fr; gap: 16px; padding: 18px 0; border-top: 1px solid var(--line); }
+.ways li:last-child { border-bottom: 1px solid var(--line); }
+.ways i { width: 10px; height: 10px; border-radius: 50%; margin-top: 8px; }
+.ways b { color: var(--bright); font-weight: 600; display: block; }
+
+/* ---------- The smaller things ---------- */
+.small-things { margin-top: 40px; display: grid; grid-template-columns: repeat(2, 1fr); column-gap: 64px; }
+.small-things div { padding: 20px 0; border-top: 1px solid var(--line); }
+.small-things h3 { margin-bottom: 5px; }
+.small-things p { color: var(--muted); max-width: 46ch; }
+
+/* ---------- Download ---------- */
+.get { margin-top: 120px; background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 84px 0; }
+.get-grid { margin-top: 44px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+.get-grid > div { padding: 0 34px; border-left: 1px solid var(--line); }
+.get-grid > div:first-child { padding-left: 0; border-left: 0; }
+.get-grid h3 { font-size: 1.35rem; margin-bottom: 8px; }
+.get-grid p { color: var(--muted); margin-bottom: 20px; min-height: 4.6em; }
+.get-grid .fine { margin-top: 16px; }
+.qr { display: flex; align-items: center; gap: 16px; margin-top: 22px; color: var(--muted); font-size: 0.9rem; }
+.qr img { width: 104px; height: 104px; border-radius: 8px; flex: none; }
+.smart { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); max-width: 78ch; }
+.smart b { color: var(--text); }
+footer { padding: 34px 0 48px; color: var(--muted); font-size: 0.93rem; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 28px; align-items: center; }
+footer a { color: var(--muted); }
+footer .brand { font-size: 1.05rem; margin-right: auto; }
+footer .brand img { width: 26px; height: 26px; }
+
+/* ---------- Smaller screens ---------- */
+@media (max-width: 980px) {
+  .hero-text, .split, .together { grid-template-columns: 1fr; gap: 36px; }
+  .split.flip > .copy { order: 0; }
+  .demo-grid { grid-template-columns: minmax(0, 1fr); }
+  .srcs { flex-direction: row; height: auto; width: 280px; margin: 0 auto; justify-content: space-between; }
+  .src { grid-template-columns: 1fr; width: 136px; text-align: center; row-gap: 6px; justify-items: center; }
+  .src-line { justify-content: center; flex-wrap: wrap; gap: 6px 10px; }
+  .lines { height: 120px; margin-top: 10px; }
+  .lines .h { display: none; }
+  .lines .v { display: block; width: 280px; height: 120px; margin: 0 auto; }
+  .lines img { top: 62px; width: 50px; height: 50px; }
+  .phones { height: 520px; max-width: 520px; }
+  .get-grid { grid-template-columns: 1fr; }
+  .get-grid > div { padding: 30px 0; border-left: 0; border-top: 1px solid var(--line); }
+  .get-grid > div:first-child { border-top: 0; padding-top: 0; }
+  .get-grid p { min-height: 0; }
+  section.part { padding-top: 88px; }
+}
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 20px; }
+  .top nav { display: none; }
+  .top .btn { margin-left: auto; }
+  .hero { padding-top: 26px; }
+  .demo { padding: 22px 18px 18px; border-radius: 20px; margin-top: 40px; }
+  .total { font-size: 2rem; }
+  .phones { height: 430px; }
+  .phones .phone:nth-child(1) { width: 210px; left: 0; }
+  .phones .phone:nth-child(2) { width: 180px; left: auto; right: 0; top: 60px; }
+  .tvset .phone { width: 120px; right: 0; border-radius: 20px; padding: 4px; }
+  .tvset .phone img { border-radius: 16px; }
+  .small-things { grid-template-columns: 1fr; }
+  .map, .qr { display: none; }
+  .board { grid-template-columns: 1fr 90px 1fr; padding: 6px 12px; }
+  .board li { flex-direction: column; gap: 0; }
+  .board .mid svg { width: 90px; }
+  .win { font-size: 12px; }
+  .board .sum b { font-size: 1.5rem; }
+  .win-tabs i:nth-child(3) { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .dot { display: none; }
+}
 </style>
 </head>
 <body>
+
+<header class="wrap top">
+  <a class="brand" href="#"><img src="logo.png" alt="">FetchKosh</a>
+  <nav aria-label="Sections">
+    <a href="#phone">Phone</a>
+    <a href="#tv">TV</a>
+    <a href="#pc">PC</a>
+    <a href="#together">Together</a>
+  </nav>
+  <a class="btn small" href="#get">Download</a>
+</header>
+
 <main>
-  <header>
-    <img src="logo.png" alt="FetchKosh logo">
-    <h1>FetchKosh</h1>
-    <p class="tag">Faster downloads with Wi-Fi and mobile data together. Watch your files on your TV. Send files between your phone and PC.</p>
-  </header>
+<!-- ============================ Hero ============================ -->
+<section class="wrap hero">
+  <div class="hero-text">
+    <h1>Wi-Fi and mobile data, on the same download.</h1>
+    <div class="hero-side">
+      <p class="lede">FetchKosh splits a file into parts and pulls them over both connections at once, so big files finish sooner. It also plays your files on your TV and moves them between your phone and PC.</p>
+      <div class="actions">
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.kosh.fetchkosh">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 5 3.5Z"/></svg>
+          Get it on Google Play</a>
+        <a class="btn quiet" href="https://github.com/patilsiddhesh23/fetchkosh/releases/latest/download/FetchKosh-setup.exe">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.2 10.5 4v7.5H3V5.2ZM11.7 3.8 21 2.4v9.1h-9.3V3.8ZM3 12.6h7.5V20L3 18.8v-6.2Zm8.7 0H21v9l-9.3-1.4v-7.6Z"/></svg>
+          Download for Windows</a>
+      </div>
+      <p class="fine">Free. No ads, no account.</p>
+    </div>
+  </div>
 
-  <section class="get" aria-label="Download">
-    <div class="card">
-      <h2>Windows</h2>
-      <p>For Windows 10 and 11. Uses every connection your PC has, and your phone's 5G too.</p>
-      <a class="btn" href="https://github.com/patilsiddhesh23/fetchkosh/releases/latest/download/FetchKosh-setup.exe">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg>Download for Windows
-      </a>
-      <span class="small">Free. Updates itself. <a href="https://github.com/patilsiddhesh23/fetchkosh/releases">All versions</a></span>
-    </div>
-    <div class="card">
-      <h2>Android</h2>
-      <p>For phones and Android TV. Downloads over Wi-Fi and mobile data at the same time.</p>
-      <a class="btn" href="https://play.google.com/store/apps/details?id=com.kosh.fetchkosh">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l13 8-13 8z"/></svg>Get it on Google Play
-      </a>
-      <span class="small">Free. Phone and Android TV.</span>
-    </div>
-  </section>
+  <!-- The live demo. Speeds and files are examples; edit them in the script at the bottom. -->
+  <div class="demo" id="demo">
+    <div class="demo-grid">
+      <div class="srcs">
+        <div class="src wifi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2.5 9.5a14 14 0 0 1 19 0M5.8 13a9.2 9.2 0 0 1 12.4 0M9 16.4a4.6 4.6 0 0 1 6 0"/><circle cx="12" cy="19.6" r="1.1" fill="currentColor"/></svg>
+          <div><b>Wi-Fi</b><span class="spd num" id="spd-wifi">5.2 MB/s</span></div>
+        </div>
+        <div class="src mob" id="src-mob">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M5 20v-3M10 20v-7M15 20V9M20 20V4"/></svg>
+          <div>
+            <div class="src-line"><b>Mobile data</b>
+              <button class="switch" id="mob-switch" role="switch" aria-checked="true" aria-label="Use mobile data in this demo"></button></div>
+            <span class="spd num" id="spd-mob">4.1 MB/s</span>
+          </div>
+        </div>
+      </div>
 
-  <p class="note"><b>Windows says "Windows protected your PC"?</b> Click <b>More info</b>, then <b>Run anyway</b>. Windows shows this for new apps that aren't signed with a paid certificate yet.</p>
+      <div class="lines" id="lines">
+        <svg class="h" viewBox="0 0 300 220" aria-hidden="true">
+          <path id="h-wifi" class="path wifi" d="M0 55 C95 55 70 110 150 110"/>
+          <path id="h-mob" class="path mob" d="M0 165 C95 165 70 110 150 110"/>
+          <path id="h-out" class="path out" d="M150 110 L300 110"/>
+          <g class="dots" data-set="h"></g>
+        </svg>
+        <svg class="v" viewBox="0 0 280 120" aria-hidden="true">
+          <path id="v-wifi" class="path wifi" d="M68 0 C68 46 140 22 140 62"/>
+          <path id="v-mob" class="path mob" d="M212 0 C212 46 140 22 140 62"/>
+          <path id="v-out" class="path out" d="M140 62 L140 120"/>
+          <g class="dots" data-set="v"></g>
+        </svg>
+        <img src="logo.png" alt="">
+      </div>
 
-  <section class="features" aria-label="What it does">
-    <div>
-      <h3>One file, two connections</h3>
-      <p>Wi-Fi and mobile data (or Ethernet and USB tethering) work on the same download.</p>
+      <div class="file" aria-live="off">
+        <div class="file-top">
+          <span class="file-name" id="f-name">ubuntu-24.04.1-desktop-amd64.iso</span>
+          <span class="total num"><span id="f-total">9.3</span><small>MB/s</small></span>
+        </div>
+        <div class="bar"><i id="f-bar"></i></div>
+        <div class="file-stats num"><span id="f-size">0 MB of 5.8 GB</span><span id="f-left">10m 24s left</span></div>
+      </div>
     </div>
-    <div>
-      <h3>Watch on TV</h3>
-      <p>Your TV plays videos and photos straight from your phone or PC over home Wi-Fi.</p>
-    </div>
-    <div>
-      <h3>Phone and PC together</h3>
-      <p>Send files and links both ways over Wi-Fi, and lend your PC your phone's 5G.</p>
-    </div>
-  </section>
+    <p class="demo-note">A simulation with example speeds, sped up. Switch mobile data off to see the difference. Your speeds depend on your Wi-Fi and your mobile network.</p>
+  </div>
+</section>
 
-  <footer>
-    No account, no ads, no data collected. <a href="https://sites.google.com/view/fetchkosh-privacy-policy">Privacy policy</a>
-  </footer>
+<!-- ============================ Phone ============================ -->
+<section class="wrap part" id="phone">
+  <div class="split">
+    <div class="copy">
+      <div class="where"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6.5" y="2.5" width="11" height="19" rx="2.6"/><path d="M10.5 18.5h3"/></svg>On your Android phone</div>
+      <h2>Your phone has two connections. Use both.</h2>
+      <p>Paste a link, or share one to FetchKosh from any app. The speed card at the top shows what each connection is giving you and the total.</p>
+      <ul class="points">
+        <li><b>You set the limit.</b> Give mobile data a daily cap (500 MB to 5 GB), or switch to Wi-Fi only with one tap.</li>
+        <li><b>It keeps going.</b> Downloads carry on with the screen off, and resume after a dropped network or a restart.</li>
+        <li><b>Download tonight.</b> Mark a file for tonight and it runs in your night data window, only while charging if you like.</li>
+        <li><b>Speed test built in.</b> Test Wi-Fi and mobile data, each alone and both together.</li>
+      </ul>
+    </div>
+    <div class="phones">
+      <div class="phone"><img src="img/phone-downloads.webp" width="600" height="1067" alt="FetchKosh on a phone: a speed card showing Wi-Fi at 4.6 MB/s and mobile data at 4.6 MB/s, 9.1 MB/s in total, above a list of downloads"></div>
+      <div class="phone"><img src="img/phone-speedtest.webp" width="600" height="1067" loading="lazy" alt="The speed test screen with an analog speed meter"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TV ============================ -->
+<section class="wrap part" id="tv">
+  <div class="split flip">
+    <div class="copy">
+      <div class="where"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="12.5" rx="2"/><path d="M8.5 20.5h7"/></svg>On your Android TV</div>
+      <h2>Watch it on the TV. Your phone is the remote.</h2>
+      <p>Videos, photos and music play on the TV straight from your phone or PC, over your home Wi-Fi. Full quality, instant skipping, and no internet needed.</p>
+      <ul class="points">
+        <li><b>Scan to connect.</b> The TV shows a code; scan it with your phone. Nothing to type.</li>
+        <li><b>A real remote.</b> Play, pause, drag to any point, skip 10 seconds, volume, audio track and subtitles.</li>
+        <li><b>Keep a copy.</b> Save shared files on the TV, or on a USB drive plugged into it.</li>
+      </ul>
+    </div>
+    <div class="tvset">
+      <div class="tv"><img src="img/tv-library.webp" width="1440" height="810" loading="lazy" alt="FetchKosh on a TV, listing videos and music shared from a PC"></div>
+      <div class="tv-stand"></div>
+      <div class="phone"><img src="img/phone-remote.webp" width="600" height="1067" loading="lazy" alt="The phone as a remote: pause, skip, volume, audio and subtitles for Big Buck Bunny playing on Living Room TV"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PC ============================ -->
+<section class="wrap part" id="pc">
+  <div class="split">
+    <div class="copy">
+      <div class="where"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4.5" width="16" height="11" rx="1.6"/><path d="M2 19.5h20"/></svg>On your Windows PC</div>
+      <h2>Every connection the PC has, and your phone's 5G too.</h2>
+      <p>FetchKosh for Windows downloads over Ethernet, Wi-Fi and USB tethering together. With the phone app on the same Wi-Fi, your phone's mobile data joins in as one more connection.</p>
+      <ul class="points">
+        <li><b>No hotspot to set up.</b> The PC finds your phone by itself. Pair once with a code.</li>
+        <li><b>Send files both ways.</b> From any phone app: Share, then Send to PC. No cable, no mobile data used.</li>
+        <li><b>Send a link.</b> Find a download on your phone and let the PC fetch it.</li>
+      </ul>
+    </div>
+    <div class="win" role="img" aria-label="FetchKosh for Windows: Ethernet, Wi-Fi and the phone's 5G feeding one download at 12.4 MB/s">
+      <div class="win-bar"><img src="logo.png" alt="">FetchKosh<span>&#8211;&#9633;&#215;</span></div>
+      <div class="win-tabs"><i class="on">Downloads</i><i>Send to phone</i><i>Watch on TV</i></div>
+      <div class="board">
+        <ul>
+          <li>Ethernet <span class="num">6.1 MB/s</span></li>
+          <li>Wi-Fi <span class="num">3.5 MB/s</span></li>
+          <li>Phone 5G <span class="num">2.8 MB/s</span></li>
+        </ul>
+        <div class="mid">
+          <svg viewBox="0 0 150 150" fill="none" stroke="#6e6e73" stroke-width="1.5" preserveAspectRatio="none">
+            <path d="M0 25 C50 25 40 75 75 75M0 75 H75M0 125 C50 125 40 75 75 75M75 75 H150"/>
+          </svg>
+          <img src="logo.png" alt="">
+        </div>
+        <div class="sum"><b class="num">12.4</b><span>MB/s total</span></div>
+      </div>
+      <div class="win-row">
+        <div><b>Fedora-Workstation-41.iso</b><span class="num">62%</span></div>
+        <div class="wbar"><i></i></div>
+        <div><span class="num">1.4 GB of 2.3 GB</span><span class="num">1m 12s left</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Together ============================ -->
+<section class="wrap part" id="together">
+  <h2>Three apps that find each other on your Wi-Fi.</h2>
+  <div class="together">
+    <svg class="map" viewBox="0 0 620 440" role="img" aria-label="The phone, the PC and the TV connect to each other over home Wi-Fi">
+      <path id="m-pt" class="link" d="M150 318 C170 210 230 140 290 112"/>
+      <path id="m-ct" class="link" d="M470 318 C450 210 390 140 330 112"/>
+      <path id="m-pc" class="link" d="M196 352 H424"/>
+      <path id="m-5g" class="link" d="M196 384 H424"/>
+      <g class="dots" data-set="m"></g>
+      <!-- TV -->
+      <rect class="plate" x="230" y="20" width="160" height="112" rx="20"/>
+      <rect class="dev" x="270" y="46" width="80" height="50" rx="5"/><path class="dev" d="M294 108h32"/>
+      <text class="name" x="310" y="160">Android TV</text>
+      <!-- Phone -->
+      <rect class="plate" x="76" y="300" width="120" height="112" rx="20"/>
+      <rect class="dev" x="117" y="322" width="38" height="66" rx="7"/><path class="dev" d="M131 378h10"/>
+      <text class="name" x="136" y="436">Phone</text>
+      <!-- PC -->
+      <rect class="plate" x="424" y="300" width="120" height="112" rx="20"/>
+      <rect class="dev" x="452" y="328" width="64" height="42" rx="4"/><path class="dev" d="M442 384h84"/>
+      <text class="name" x="484" y="436">Windows PC</text>
+      <text x="310" y="342">files and links</text>
+      <text x="310" y="404">phone's 5G</text>
+    </svg>
+    <ul class="ways">
+      <li><i style="background:#E2CFF6"></i><div><b>Phone to TV</b>Play what's on your phone, and control it from the phone.</div></li>
+      <li><i style="background:#a877e6"></i><div><b>PC to TV</b>Share a folder from the Windows app and pick what to watch on the TV.</div></li>
+      <li><i style="background:#ffffff"></i><div><b>Phone and PC</b>Files and links go both ways, with progress on both screens.</div></li>
+      <li><i style="background:#FFB400"></i><div><b>Phone's 5G to PC</b>The PC borrows your mobile data for its downloads. Your daily limit still applies.</div></li>
+    </ul>
+  </div>
+  <p class="fine" style="margin-top:22px; max-width:70ch">A TV or PC connects only after you approve it on your phone, and you can remove it at any time. Lending mobile data to a PC works like a hotspot, so check that your plan allows it.</p>
+</section>
+
+<!-- ============================ Smaller things ============================ -->
+<section class="wrap part">
+  <h2>The smaller things.</h2>
+  <div class="small-things">
+    <div><h3>Pause and resume</h3><p>Even after closing the app or restarting the phone. Nothing starts over.</p></div>
+    <div><h3>A queue you control</h3><p>Choose how many downloads run at once and drag the rest into order.</p></div>
+    <div><h3>Google Drive links</h3><p>Big shared files download directly, without the "can't scan this file for viruses" page.</p></div>
+    <div><h3>How much faster was it?</h3><p>After a download, see the time saved over Wi-Fi alone and share it as a picture.</p></div>
+    <div><h3>Dark and light</h3><p>One switch at the top of the phone app.</p></div>
+    <div><h3>Private</h3><p>No sign-in and no ads. Nothing is collected; your downloads and settings stay on your devices.</p></div>
+  </div>
+</section>
+
+<!-- ============================ Download ============================ -->
+<section class="get" id="get">
+  <div class="wrap">
+    <h2>Get FetchKosh.</h2>
+    <div class="get-grid">
+      <div>
+        <h3>Android phone</h3>
+        <p>Android 9 or newer. Downloads over Wi-Fi and mobile data together.</p>
+        <a class="btn" href="https://play.google.com/store/apps/details?id=com.kosh.fetchkosh">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 5 3.5Z"/></svg>
+          Get it on Google Play</a>
+        <div class="qr"><img src="img/play-qr.svg" width="104" height="104" alt="QR code that opens FetchKosh on Google Play">On a computer? Scan this with your phone's camera.</div>
+      </div>
+      <div>
+        <h3>Windows PC</h3>
+        <p>Windows 10 and 11, about 46 MB. It updates itself when a new version is out.</p>
+        <a class="btn" href="https://github.com/patilsiddhesh23/fetchkosh/releases/latest/download/FetchKosh-setup.exe">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>
+          Download for Windows</a>
+        <p class="fine"><a href="https://github.com/patilsiddhesh23/fetchkosh/releases">All versions and release notes</a></p>
+      </div>
+      <div>
+        <h3>Android TV</h3>
+        <p>Android 9 or newer. Open Google Play on the TV and search for FetchKosh.</p>
+        <p class="fine" style="margin-top:0">Then on your phone: FetchKosh, TV tab, Scan the TV's code.</p>
+      </div>
+    </div>
+    <p class="smart"><b>Windows says "Windows protected your PC"?</b> Click <b>More info</b>, then <b>Run anyway</b>. Windows shows this for new apps that aren't signed with a paid certificate yet.</p>
+  </div>
+</section>
 </main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="#"><img src="logo.png" alt="">FetchKosh</a>
+    <a href="https://sites.google.com/view/fetchkosh-privacy-policy">Privacy policy</a>
+    <a href="https://github.com/patilsiddhesh23/fetchkosh/releases">Windows releases</a>
+    <span>Please only download files you have the right to download.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var NS = "http://www.w3.org/2000/svg";
+  var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Dots that travel along a line: [path id, colour class, how many, seconds for one trip]
+  function dots(set, list) {
+    var g = document.querySelector('.dots[data-set="' + set + '"]');
+    if (!g || still) return;
+    list.forEach(function (d) {
+      for (var i = 0; i < d[2]; i++) {
+        var c = document.createElementNS(NS, "circle");
+        c.setAttribute("r", d[4] || 3.4);
+        c.setAttribute("class", "dot " + d[1]);
+        var m = document.createElementNS(NS, "animateMotion");
+        m.setAttribute("dur", d[3] + "s");
+        m.setAttribute("begin", (-i * d[3] / d[2]).toFixed(2) + "s");
+        m.setAttribute("repeatCount", "indefinite");
+        if (d[5]) { m.setAttribute("keyPoints", "1;0"); m.setAttribute("keyTimes", "0;1"); m.setAttribute("calcMode", "linear"); }
+        var p = document.createElementNS(NS, "mpath");
+        p.setAttribute("href", "#" + d[0]);
+        m.appendChild(p); c.appendChild(m); g.appendChild(c);
+      }
+    });
+  }
+  dots("h", [["h-wifi", "wifi", 3, 2.1], ["h-mob", "mob", 3, 2.6], ["h-out", "out", 3, 1.5]]);
+  dots("v", [["v-wifi", "wifi", 2, 1.7], ["v-mob", "mob", 2, 2.1], ["v-out", "out", 2, 1.1]]);
+  // The map: slow, one or two dots a line. The last value true = travels the other way.
+  dots("m", [["m-pt", "mob", 2, 6, 3.2], ["m-ct", "wifi", 2, 6, 3.2], ["m-pc", "out", 1, 5, 3.2], ["m-pc", "out", 1, 5, 3.2, true], ["m-5g", "amber", 2, 5, 3.2]]);
+  document.querySelectorAll(".dot.amber").forEach(function (c) { c.style.fill = "#FFB400"; });
+
+  // ---- The download demo. Change the example files and speeds here. ----
+  var FILES = [
+    { name: "ubuntu-24.04.1-desktop-amd64.iso", mb: 5800 },
+    { name: "Big_Buck_Bunny_4K.mp4", mb: 2400 },
+    { name: "Fedora-Workstation-41.iso", mb: 2300 }
+  ];
+  var WIFI = 5.2, MOBILE = 4.1;   // MB a second
+  var FASTER = 45;                // the demo runs this many times faster than real life
+
+  var $ = function (id) { return document.getElementById(id); };
+  var sw = $("mob-switch"), demo = $("demo"), srcMob = $("src-mob");
+  var mobileOn = true, file = 0, done = 0, took = 0, wifiOnly = 0, rest = 0, t = 0;
+
+  function size(mb) { return mb >= 1000 ? (mb / 1000).toFixed(1) + " GB" : Math.round(mb) + " MB"; }
+  function time(s) { s = Math.round(s); return s >= 60 ? Math.floor(s / 60) + "m " + (s % 60) + "s" : s + "s"; }
+  function wobble(base, k) { return base * (1 + 0.07 * Math.sin(t * 1.3 + k) + 0.04 * Math.sin(t * 3.1 + k * 2)); }
+
+  function show() {
+    var f = FILES[file];
+    var w = wobble(WIFI, 0), m = mobileOn ? wobble(MOBILE, 2) : 0, total = w + m;
+    if (rest > 0) {           // just finished: show how long it took
+      $("f-bar").style.width = "100%";
+      $("f-size").textContent = size(f.mb) + " downloaded";
+      $("f-left").innerHTML = '<span class="file-done">Done in ' + time(took) + "</span>  Wi-Fi alone: " + time(wifiOnly);
+      return;
+    }
+    $("spd-wifi").textContent = w.toFixed(1) + " MB/s";
+    $("spd-mob").textContent = mobileOn ? m.toFixed(1) + " MB/s" : "Off";
+    $("f-total").textContent = total.toFixed(1);
+    $("f-name").textContent = f.name;
+    $("f-bar").style.width = (100 * done / f.mb).toFixed(1) + "%";
+    $("f-size").textContent = size(done) + " of " + size(f.mb);
+    $("f-left").textContent = time((f.mb - done) / total) + " left";
+    return total;
+  }
+
+  function step() {
+    t += 0.1;
+    if (rest > 0) {
+      rest -= 0.1;
+      if (rest <= 0) { file = (file + 1) % FILES.length; done = 0; took = 0; }
+      show();
+      return;
+    }
+    var total = show();
+    var real = 0.1 * FASTER;                // seconds of real life in this step
+    done += total * real; took += real;
+    if (done >= FILES[file].mb) { done = FILES[file].mb; wifiOnly = FILES[file].mb / WIFI; rest = 4; show(); }
+  }
+
+  sw.addEventListener("click", function () {
+    mobileOn = !mobileOn;
+    sw.setAttribute("aria-checked", mobileOn);
+    demo.classList.toggle("mob-off", !mobileOn);
+    srcMob.classList.toggle("off", !mobileOn);
+    show();
+  });
+
+  show();
+  if (!still) setInterval(step, 100);
+  else { done = FILES[0].mb * 0.42; show(); }   // reduced motion: one still frame; the switch still works
+})();
+</script>
 </body>
 </html>
