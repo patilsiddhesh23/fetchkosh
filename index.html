@@ -31,6 +31,8 @@
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
+html, body { overflow-x: hidden; }
+@supports (overflow: clip) { html, body { overflow-x: clip; } }
 body { margin: 0; background: var(--ink); color: var(--text); font: 400 17px/1.55 var(--body); -webkit-font-smoothing: antialiased; }
 img { max-width: 100%; height: auto; display: block; }
 a { color: var(--lav); text-underline-offset: 3px; }
@@ -70,7 +72,7 @@ header.top { padding-top: 24px; padding-bottom: 22px; }
 .fine { color: var(--muted); font-size: 0.9rem; margin-top: 14px; }
 
 /* The live demo: two connections flow into one file */
-.demo { margin-top: 48px; background: var(--panel); border: 1px solid var(--line); border-radius: 26px; padding: 30px 34px 22px; }
+.demo { overflow: hidden; margin-top: 48px; background: var(--panel); border: 1px solid var(--line); border-radius: 26px; padding: 30px 34px 22px; }
 .demo-grid { display: grid; grid-template-columns: minmax(210px, 1fr) 300px minmax(300px, 1.5fr); align-items: center; }
 .srcs { display: flex; flex-direction: column; justify-content: space-around; height: 220px; }
 .src { display: grid; grid-template-columns: 30px 1fr; column-gap: 14px; align-items: center; }
@@ -95,7 +97,7 @@ header.top { padding-top: 24px; padding-bottom: 22px; }
 .dot.wifi { fill: #a877e6; } .dot.mob { fill: var(--lav); } .dot.out { fill: #fff; }
 .mob-off .path.mob { stroke: #3a3442; opacity: 1; }
 .mob-off .dot.mob { display: none; }
-.file { min-width: 0; background: var(--ink); border: 1px solid var(--line); border-radius: 18px; padding: 20px 22px; }
+.file { overflow: hidden; min-width: 0; background: var(--ink); border: 1px solid var(--line); border-radius: 18px; padding: 20px 22px; }
 .file-top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; min-width: 0; }
 .file-name { color: var(--bright); font-weight: 600; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .total { font: 700 2.2rem/1 var(--display); color: var(--bright); white-space: nowrap; letter-spacing: -0.02em; }
@@ -103,6 +105,7 @@ header.top { padding-top: 24px; padding-bottom: 22px; }
 .bar { height: 8px; border-radius: 4px; background: #2a2630; margin: 16px 0 10px; overflow: hidden; }
 .bar i { display: block; height: 100%; width: 0; border-radius: 4px; background: linear-gradient(90deg, var(--purple), var(--lav)); }
 .file-stats { display: flex; justify-content: space-between; gap: 14px; color: var(--muted); font-size: 0.95rem; }
+.file-stats > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .file-done { color: var(--lav); }
 .demo-fit { position: relative; }
 .demo.fitted .demo-grid { position: absolute; left: 0; top: 0; width: 716px; grid-template-columns: 214px 200px 1fr; transform-origin: 0 0; font-size: 22px; }
@@ -150,7 +153,7 @@ section.part { padding-top: 96px; }
 .tvset .phone img { border-radius: 22px; }
 
 /* A laptop, with the Windows app (drawn in HTML, black and white like the real one) on its screen */
-.laptop-fit { width: 100%; max-width: 540px; margin: 0 auto; position: relative; }
+.laptop-fit { width: 100%; max-width: 540px; margin: 0 auto; position: relative; overflow: hidden; }
 .laptop { position: absolute; left: 0; top: 0; width: 600px; padding: 0 30px; transform-origin: 0 0; }
 .lid { position: relative; background: #1c1a20; border-radius: 16px 16px 4px 4px; padding: 16px 14px 18px; box-shadow: 0 0 0 1px #37323e, 0 50px 80px -40px #000; }
 .lid::before { content: ""; position: absolute; top: 6px; left: 50%; width: 5px; height: 5px; margin-left: -2.5px; border-radius: 50%; background: #3a3540; }
@@ -575,8 +578,8 @@ footer .brand img { width: 26px; height: 26px; }
     var w = wobble(WIFI, 0), m = mobileOn ? wobble(MOBILE, 2) : 0, total = w + m;
     if (rest > 0) {           // just finished: show how long it took
       $("f-bar").style.width = "100%";
-      $("f-size").textContent = size(f.mb) + " downloaded";
-      $("f-left").innerHTML = '<span class="file-done">Done in ' + time(took) + "</span>  <span class=\"nb\">Wi-Fi alone: " + time(wifiOnly) + "</span>";
+      $("f-size").innerHTML = '<span class="file-done">Done in ' + time(took) + "</span>";
+      $("f-left").textContent = time(wifiOnly - took) + (demo.classList.contains("fitted") ? " faster" : " faster than Wi-Fi alone");
       return;
     }
     $("spd-wifi").textContent = w.toFixed(1) + " MB/s";
