@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FetchKosh: download for Windows and Android</title>
+<meta name="description" content="FetchKosh downloads one file over Wi-Fi and mobile data at the same time, plays your files on your TV and sends files between your phone and PC. Free, no account, no ads.">
+<link rel="icon" href="favicon.png">
+<style>
+:root {
+  --bg: #F6F4F9; --card: #FFFFFF; --line: #E4DFEA; --text: #2B2733; --title: #15121A; --muted: #6B6474;
+  --button: #8044C6; --on-button: #FFFFFF; --accent: #9257D6;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #111111; --card: #101012; --line: #202023; --text: #D8D8D8; --title: #F7F3FB; --muted: #A9A1B1; --accent: #E2CFF6; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+main { max-width: 760px; margin: 0 auto; padding: 48px 16px 40px; }
+header { text-align: center; }
+header img { width: 96px; height: 96px; }
+h1 { color: var(--title); font-size: 40px; line-height: 1.15; margin: 12px 0 8px; font-weight: 700; }
+.tag { color: var(--muted); font-size: 18px; margin: 0 auto; max-width: 560px; }
+.get { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin: 36px 0 12px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px; display: flex; flex-direction: column; gap: 10px; }
+.card h2 { color: var(--title); font-size: 20px; margin: 0; font-weight: 600; }
+.card p { margin: 0; color: var(--muted); font-size: 15px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 20px; border-radius: 14px;
+       background: var(--button); color: var(--on-button); font-weight: 600; font-size: 16px; text-decoration: none; margin-top: auto; }
+.btn:hover { filter: brightness(1.1); }
+.btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.small { font-size: 13px; color: var(--muted); }
+.small a, footer a { color: var(--accent); }
+.note { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 18px; font-size: 14px; color: var(--muted); }
+.note b { color: var(--title); font-weight: 600; }
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 40px; }
+.features div { padding: 4px 2px; }
+.features h3 { color: var(--title); font-size: 16px; margin: 0 0 4px; font-weight: 600; }
+.features p { margin: 0; font-size: 15px; color: var(--muted); }
+footer { margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); text-align: center; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="logo.png" alt="FetchKosh logo">
+    <h1>FetchKosh</h1>
+    <p class="tag">Faster downloads with Wi-Fi and mobile data together. Watch your files on your TV. Send files between your phone and PC.</p>
+  </header>
+
+  <section class="get" aria-label="Download">
+    <div class="card">
+      <h2>Windows</h2>
+      <p>For Windows 10 and 11. Uses every connection your PC has, and your phone's 5G too.</p>
+      <a class="btn" href="https://github.com/patilsiddhesh23/fetchkosh/releases/latest/download/FetchKosh-setup.exe">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></svg>Download for Windows
+      </a>
+      <span class="small">Free. Updates itself. <a href="https://github.com/patilsiddhesh23/fetchkosh/releases">All versions</a></span>
+    </div>
+    <div class="card">
+      <h2>Android</h2>
+      <p>For phones and Android TV. Downloads over Wi-Fi and mobile data at the same time.</p>
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.kosh.fetchkosh">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l13 8-13 8z"/></svg>Get it on Google Play
+      </a>
+      <span class="small">Free. Phone and Android TV.</span>
+    </div>
+  </section>
+
+  <p class="note"><b>Windows says "Windows protected your PC"?</b> Click <b>More info</b>, then <b>Run anyway</b>. Windows shows this for new apps that aren't signed with a paid certificate yet.</p>
+
+  <section class="features" aria-label="What it does">
+    <div>
+      <h3>One file, two connections</h3>
+      <p>Wi-Fi and mobile data (or Ethernet and USB tethering) work on the same download.</p>
+    </div>
+    <div>
+      <h3>Watch on TV</h3>
+      <p>Your TV plays videos and photos straight from your phone or PC over home Wi-Fi.</p>
+    </div>
+    <div>
+      <h3>Phone and PC together</h3>
+      <p>Send files and links both ways over Wi-Fi, and lend your PC your phone's 5G.</p>
+    </div>
+  </section>
+
+  <footer>
+    No account, no ads, no data collected. <a href="https://sites.google.com/view/fetchkosh-privacy-policy">Privacy policy</a>
+  </footer>
+</main>
+</body>
+</html>
