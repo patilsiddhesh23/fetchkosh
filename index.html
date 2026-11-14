@@ -27,7 +27,7 @@
   --muted: #9d95a8;
   --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
-  --wrap: 1160px;
+  --wrap: 1200px;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -37,11 +37,11 @@ a { color: var(--lav); text-underline-offset: 3px; }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 6px; }
 .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 28px; }
 h1, h2, h3 { font-family: var(--display); color: var(--bright); margin: 0; letter-spacing: -0.02em; }
-h1 { font-size: clamp(2.7rem, 6.6vw, 5.5rem); line-height: 0.96; font-weight: 700; max-width: 13ch; }
-h2 { font-size: clamp(1.9rem, 3.6vw, 3rem); line-height: 1.04; font-weight: 650; max-width: 18ch; }
+h1 { font-size: clamp(2.2rem, 4.4vw, 3.9rem); line-height: 1.02; font-weight: 700; max-width: 15ch; }
+h2 { font-size: clamp(1.6rem, 2.7vw, 2.35rem); line-height: 1.1; font-weight: 650; max-width: 20ch; }
 h3 { font-size: 1.12rem; font-weight: 600; letter-spacing: -0.01em; }
 p { margin: 0; }
-.lede { font-size: 1.2rem; max-width: 44ch; color: var(--text); }
+.lede { font-size: 1.1rem; max-width: 46ch; color: var(--text); }
 .num { font-variant-numeric: tabular-nums; }
 .nb { white-space: nowrap; }
 
@@ -62,7 +62,7 @@ p { margin: 0; }
 
 /* ---------- Hero ---------- */
 .hero { padding: 54px 0 0; }
-.hero-text { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+.hero-text { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
 .hero-side { padding-top: 6px; }
 .hero-side .lede { margin-bottom: 26px; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; }
@@ -97,7 +97,7 @@ p { margin: 0; }
 .file { min-width: 0; background: var(--ink); border: 1px solid var(--line); border-radius: 18px; padding: 20px 22px; }
 .file-top { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; min-width: 0; }
 .file-name { color: var(--bright); font-weight: 600; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.total { font: 700 2.5rem/1 var(--display); color: var(--bright); white-space: nowrap; letter-spacing: -0.02em; }
+.total { font: 700 2.2rem/1 var(--display); color: var(--bright); white-space: nowrap; letter-spacing: -0.02em; }
 .total small { font: 500 1rem var(--body); color: var(--muted); letter-spacing: 0; margin-left: 4px; }
 .bar { height: 8px; border-radius: 4px; background: #2a2630; margin: 16px 0 10px; overflow: hidden; }
 .bar i { display: block; height: 100%; width: 0; border-radius: 4px; background: linear-gradient(90deg, var(--purple), var(--lav)); }
@@ -130,10 +130,11 @@ section.part { padding-top: 96px; }
 .tvset .phone img { border-radius: 22px; }
 
 /* A laptop, with the Windows app (drawn in HTML, black and white like the real one) on its screen */
-.laptop { position: relative; padding: 0 5%; }
+.laptop-fit { width: 100%; max-width: 540px; margin: 0 auto; position: relative; }
+.laptop { position: absolute; left: 0; top: 0; width: 600px; padding: 0 30px; transform-origin: 0 0; }
 .lid { position: relative; background: #1c1a20; border-radius: 16px 16px 4px 4px; padding: 16px 14px 18px; box-shadow: 0 0 0 1px #37323e, 0 50px 80px -40px #000; }
 .lid::before { content: ""; position: absolute; top: 6px; left: 50%; width: 5px; height: 5px; margin-left: -2.5px; border-radius: 50%; background: #3a3540; }
-.base { position: relative; height: 16px; margin: 0 -5%; border-radius: 2px 2px 14px 14px; background: linear-gradient(#2c2832, #1a171e); box-shadow: 0 0 0 1px #37323e, 0 24px 30px -18px #000; }
+.base { position: relative; height: 16px; margin: 0 -30px; border-radius: 2px 2px 14px 14px; background: linear-gradient(#2c2832, #1a171e); box-shadow: 0 0 0 1px #37323e, 0 24px 30px -18px #000; }
 .base::before { content: ""; position: absolute; top: 0; left: 50%; width: 18%; height: 6px; transform: translateX(-50%); border-radius: 0 0 8px 8px; background: #141217; }
 .win { background: #0b0b0c; border-radius: 3px; color: #f5f5f6; font-size: 13px; overflow: hidden; }
 .win-bar { display: flex; align-items: center; gap: 9px; padding: 9px 12px; color: #c9c9cc; font-size: 12.5px; }
@@ -142,16 +143,17 @@ section.part { padding-top: 96px; }
 .win-tabs { display: flex; gap: 8px; padding: 6px 16px 14px; }
 .win-tabs i { font-style: normal; padding: 5px 14px; border-radius: 16px; box-shadow: inset 0 0 0 1px #2a2a2d; }
 .win-tabs i.on { background: #f5f5f6; color: #0b0b0c; font-weight: 600; box-shadow: none; }
-.board { margin: 0 16px; border: 1px solid #2a2a2d; border-radius: 12px; display: grid; grid-template-columns: 1fr 150px 1fr; align-items: center; padding: 6px 18px; }
-.board ul { list-style: none; margin: 0; padding: 0; height: 150px; display: flex; flex-direction: column; justify-content: space-around; }
+.board { margin: 0 16px; border: 1px solid #2a2a2d; border-radius: 12px; display: grid; grid-template-columns: 1fr 170px max-content; align-items: center; padding: 6px 18px; }
+.board ul { list-style: none; margin: 0; padding: 0 12px 0 0; height: 150px; display: flex; flex-direction: column; justify-content: space-around; }
 .board li { display: flex; justify-content: space-between; gap: 10px; white-space: nowrap; }
 .board li span { color: #a1a1a6; }
+.board li span.nb { color: inherit; }
 .board .mid { position: relative; height: 150px; }
-.board .mid svg { width: 150px; height: 150px; display: block; }
+.board .mid svg { width: 170px; height: 150px; display: block; }
 .board .mid .path { stroke: #4a4a4f; stroke-width: 1.5; }
 .dot.pc { fill: #f5f5f6; }
 .board .mid img { position: absolute; left: 50%; top: 50%; width: 40px; height: 40px; transform: translate(-50%, -50%); }
-.board .sum { text-align: right; }
+.board .sum { text-align: right; padding-left: 14px; }
 .board .sum b { font: 700 2rem/1 var(--display); display: block; }
 .board .sum span { color: #a1a1a6; }
 .win-row { margin: 12px 16px 16px; padding: 12px 14px; border: 1px solid #2a2a2d; border-radius: 12px; }
@@ -241,15 +243,6 @@ footer .brand img { width: 26px; height: 26px; }
   .tvset .phone img { border-radius: 16px; }
   .small-things { grid-template-columns: 1fr; }
   .map, .qr { display: none; }
-  .board { grid-template-columns: 1fr 90px 1fr; padding: 6px 12px; }
-  .board li { flex-direction: column; gap: 0; }
-  .board .mid svg { width: 90px; }
-  .win { font-size: 11px; }
-  .lid { padding: 10px 8px 12px; border-radius: 12px 12px 3px 3px; }
-  .lid::before { top: 3px; width: 4px; height: 4px; }
-  .base { height: 11px; }
-  .board .sum b { font-size: 1.5rem; }
-  .win-tabs i:nth-child(3) { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -391,7 +384,8 @@ footer .brand img { width: 26px; height: 26px; }
         <li><b>Send a link.</b> Find a download on your phone and let the PC fetch it.</li>
       </ul>
     </div>
-    <div class="laptop" role="img" aria-label="A laptop running FetchKosh for Windows: Ethernet, Wi-Fi and the phone's 5G feeding one download">
+    <div class="laptop-fit" id="laptop-fit">
+    <div class="laptop" id="laptop" role="img" aria-label="A laptop running FetchKosh for Windows: Ethernet, Wi-Fi and the phone's 5G feeding one download">
       <div class="lid">
         <div class="win" aria-hidden="true">
           <div class="win-bar"><img src="logo.png" alt="">FetchKosh<span>&#8211;&#9633;&#215;</span></div>
@@ -403,11 +397,11 @@ footer .brand img { width: 26px; height: 26px; }
               <li>Phone 5G <span class="num" id="pc-5g">2.8 MB/s</span></li>
             </ul>
             <div class="mid">
-              <svg viewBox="0 0 150 150" preserveAspectRatio="none">
-                <path id="b-1" class="path" d="M0 25 C50 25 40 75 75 75"/>
-                <path id="b-2" class="path" d="M0 75 H75"/>
-                <path id="b-3" class="path" d="M0 125 C50 125 40 75 75 75"/>
-                <path id="b-out" class="path" d="M75 75 H150"/>
+              <svg viewBox="0 0 170 150">
+                <path id="b-1" class="path" d="M4 25 C58 25 50 75 85 75"/>
+                <path id="b-2" class="path" d="M4 75 H85"/>
+                <path id="b-3" class="path" d="M4 125 C58 125 50 75 85 75"/>
+                <path id="b-out" class="path" d="M85 75 H166"/>
                 <g class="dots" data-set="b"></g>
               </svg>
               <img src="logo.png" alt="">
@@ -422,6 +416,7 @@ footer .brand img { width: 26px; height: 26px; }
         </div>
       </div>
       <div class="base"></div>
+    </div>
     </div>
   </div>
 </section>
@@ -627,6 +622,17 @@ footer .brand img { width: 26px; height: 26px; }
     pcDone += pcShow() * 0.1 * 20;
     if (pcDone >= PC_FILES[pcFile].mb) { pcDone = PC_FILES[pcFile].mb; pcRest = 3; pcShow(); }
   }
+
+  // Scale the laptop (drawn 600 px wide) to the space it has
+  var fit = $("laptop-fit"), lap = $("laptop");
+  function fitLaptop() {
+    var k = fit.clientWidth / 600;
+    lap.style.transform = "scale(" + k + ")";
+    fit.style.height = Math.ceil(lap.offsetHeight * k) + "px";
+  }
+  fitLaptop();
+  if (window.ResizeObserver) new ResizeObserver(fitLaptop).observe(fit); else window.addEventListener("resize", fitLaptop);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitLaptop);
 
   show(); pcShow();
   if (!still) setInterval(function () { step(); pcStep(); }, 100);
