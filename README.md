@@ -9,4 +9,4 @@ Faster downloads with Wi-Fi and mobile data together, watching your files on you
 
 This repository holds the Windows releases. When Windows says "Windows protected your PC", click **More info**, then **Run anyway**: Windows shows this for new apps that aren't signed with a paid certificate yet.
 
-[Privacy policy](https://sites.google.com/view/fetchkosh-privacy-policy)
+[Privacy policy](https://fetchkosh.pages.dev/privacy)

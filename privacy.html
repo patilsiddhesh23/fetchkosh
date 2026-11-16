@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FetchKosh Privacy Policy</title>
+<meta name="description" content="What FetchKosh for Android, Android TV and Windows does with your information: nothing is collected, and everything stays on your own devices.">
+<meta name="theme-color" content="#111111">
+<link rel="icon" href="favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Sans:wght@400..600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #111111; --panel: #17141b; --line: #2b2632;
+  --purple: #8044C6; --lav: #E2CFF6; --text: #D8D8D8; --bright: #f3f0f7; --muted: #9d95a8;
+  --display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { overflow-x: hidden; }
+body { margin: 0; background: var(--ink); color: var(--text); font: 400 17px/1.65 var(--body); -webkit-font-smoothing: antialiased; }
+a { color: var(--lav); text-underline-offset: 3px; overflow-wrap: anywhere; }
+a:focus-visible { outline: 2px solid var(--lav); outline-offset: 3px; border-radius: 4px; }
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 28px; }
+header.top { display: flex; align-items: center; gap: 20px; padding-top: 24px; padding-bottom: 22px; }
+.brand { display: flex; align-items: center; gap: 11px; font: 650 1.25rem var(--display); color: var(--bright); text-decoration: none; }
+.brand img { width: 34px; height: 34px; }
+.back { margin-left: auto; color: var(--muted); text-decoration: none; font-size: 0.97rem; }
+.back:hover { color: var(--bright); }
+
+.page { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 64px; padding-top: 40px; padding-bottom: 80px; }
+.toc { position: sticky; top: 24px; align-self: start; font-size: 0.93rem; }
+.toc p { color: var(--muted); margin: 0 0 10px; }
+.toc ol { list-style: none; margin: 0; padding: 0; border-left: 1px solid var(--line); }
+.toc a { display: block; padding: 5px 0 5px 16px; color: var(--muted); text-decoration: none; }
+.toc a:hover { color: var(--bright); }
+article { max-width: 70ch; }
+h1, h2, h3 { font-family: var(--display); color: var(--bright); letter-spacing: -0.015em; margin: 0; }
+h1 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.05; font-weight: 700; }
+.updated { color: var(--muted); margin: 14px 0 0; }
+.summary { margin: 32px 0 8px; padding: 22px 24px; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; }
+.summary h2 { font-size: 1.15rem; margin-bottom: 10px; }
+.summary ul { margin: 0; padding-left: 20px; }
+.summary li { margin: 4px 0; }
+section { padding-top: 40px; scroll-margin-top: 16px; }
+h2 { font-size: 1.55rem; line-height: 1.15; font-weight: 650; margin-bottom: 14px; }
+h3 { font-size: 1.1rem; font-weight: 600; margin: 24px 0 8px; }
+p { margin: 0 0 14px; }
+ul { margin: 0 0 14px; padding-left: 22px; }
+li { margin: 6px 0; }
+b { color: var(--bright); font-weight: 600; }
+code { font-family: Consolas, "Cascadia Mono", monospace; font-size: 0.9em; color: var(--bright); background: var(--panel); padding: 1px 6px; border-radius: 5px; overflow-wrap: anywhere; }
+.when { color: var(--muted); font-weight: 400; font-family: var(--body); font-size: 0.95rem; letter-spacing: 0; }
+
+footer { border-top: 1px solid var(--line); padding: 30px 0 44px; color: var(--muted); font-size: 0.93rem; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 28px; align-items: center; }
+footer a { color: var(--muted); }
+footer .brand { font-size: 1.05rem; margin-right: auto; }
+footer .brand img { width: 26px; height: 26px; }
+
+@media (max-width: 900px) {
+  .page { grid-template-columns: minmax(0, 1fr); gap: 0; padding-top: 16px; }
+  .toc { display: none; }
+}
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .wrap { padding: 0 20px; }
+  header.top { padding-top: 20px; padding-bottom: 18px; }
+  .summary { padding: 18px; }
+  footer .wrap { flex-direction: column; align-items: flex-start; gap: 12px; }
+  footer .brand { margin-right: 0; }
+}
+</style>
+</head>
+<body>
+
+<header class="wrap top">
+  <a class="brand" href="./"><img src="logo.png" alt="">FetchKosh</a>
+  <a class="back" href="./">Back to FetchKosh</a>
+</header>
+
+<main class="wrap page">
+  <nav class="toc" aria-label="On this page">
+    <p>On this page</p>
+    <ol>
+      <li><a href="#collect">What we collect</a></li>
+      <li><a href="#phone">Android phone app</a></li>
+      <li><a href="#tv">Android TV app</a></li>
+      <li><a href="#pc">Windows app</a></li>
+      <li><a href="#extension">Browser extension</a></li>
+      <li><a href="#website">This website</a></li>
+      <li><a href="#permissions">Android permissions</a></li>
+      <li><a href="#delete">Removing your data</a></li>
+      <li><a href="#other">Children, changes, contact</a></li>
+    </ol>
+  </nav>
+
+  <article>
+    <h1>FetchKosh Privacy Policy</h1>
+    <p class="updated">Last updated: 16 November 2026</p>
+
+    <div class="summary">
+      <h2>In short</h2>
+      <ul>
+        <li>FetchKosh has no account and no sign-in, and we don't run any server that the apps report to.</li>
+        <li>We don't collect, sell or share your personal information. There is no analytics or tracking.</li>
+        <li>Your downloads, settings and the devices you allow stay on your own phone, TV and PC.</li>
+        <li>FetchKosh connects only to websites you choose, a few named services (listed below) when you use a feature that needs them, and your own devices on your home Wi-Fi.</li>
+      </ul>
+    </div>
+
+    <p style="margin-top:24px">This policy covers FetchKosh for Android phones, FetchKosh for Android TV, FetchKosh for Windows, the FetchKosh browser extension, and this website (fetchkosh.pages.dev). "We" means the developer of FetchKosh.</p>
+
+    <section id="collect">
+      <h2>What we collect</h2>
+      <p><b>Nothing.</b> FetchKosh does not send us your files, your downloads, the links you use, your device details or any other personal information. There is no analytics, crash reporting or tracking library in the apps.</p>
+      <p>Like any app or browser, FetchKosh has to connect to the internet to download. The websites and services it connects to see the normal information any connection carries, such as your IP address. Each one is listed in the sections below.</p>
+    </section>
+
+    <section id="phone">
+      <h2>Android phone app</h2>
+
+      <h3>What stays on your phone</h3>
+      <ul>
+        <li>The files you download, saved in <code>Download/FetchKosh</code>.</li>
+        <li>Your download list and your settings (for example dark or light look, Wi-Fi only, the daily mobile data limit, night downloads).</li>
+        <li>How much Wi-Fi and mobile data FetchKosh used today, for the daily limit.</li>
+        <li>The TVs and PCs you allowed to connect: their names and a pairing key.</li>
+        <li>For Watch on TV: a link to each file you chose to share. The files themselves are not copied or uploaded.</li>
+      </ul>
+
+      <h3>Downloads and the built-in browser</h3>
+      <p>FetchKosh connects to the websites you choose: links you paste, share to it or copy, and pages you open in its built-in browser. It can use Wi-Fi and mobile data together for one download; you can choose Wi-Fi only, or set a daily mobile data limit, in Settings.</p>
+      <p>For downloads you start in the built-in browser, that site's cookies are sent back to the same site, so downloads that need you to be signed in keep working. They are kept in memory only and are not saved by FetchKosh. Google Drive links are downloaded directly from Google Drive in the same way.</p>
+      <p>The built-in browser blocks requests to known advertising servers using a list that is built into the app. This check happens on your phone; nothing about the pages you visit is sent anywhere.</p>
+
+      <h3>Copied links <span class="when">(while the app is open)</span></h3>
+      <p>When you open FetchKosh, it checks whether the text you copied is a download link, so it can offer to download it. The check happens only on your phone; the copied text is not saved or sent anywhere.</p>
+
+      <h3>Speed test <span class="when">(only when you start it)</span></h3>
+      <p>The speed test downloads test data from Cloudflare's speed test server (<code>speed.cloudflare.com</code>) for about 10 seconds, over Wi-Fi and, if allowed in Settings, mobile data. Cloudflare receives your IP address and the request, like any website; FetchKosh sends nothing else. The result is shown only on your phone and is not saved or shared. Mobile data used by the test counts toward your daily limit. <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare's privacy policy</a>.</p>
+
+      <h3>Watch on TV <span class="when">(only when you turn it on)</span></h3>
+      <p>When "Share with TV" is on, your phone announces itself on your home Wi-Fi with its device name, so FetchKosh on your Android TV can find it. A TV can connect only after you approve it with the code shown on the TV, or after you scan the QR code on that TV with your phone.</p>
+      <p>The TV then plays the videos, music and photos you chose, straight from your phone over your Wi-Fi. Other files you choose are copied to the TV only when you pick them on the TV. Nothing goes over the internet, and nothing is sent to us.</p>
+      <p>So your TVs still recognise this phone after FetchKosh is reinstalled, the phone gives them an ID made from the ID Android gives FetchKosh on this phone. It is sent only to TVs on your Wi-Fi.</p>
+
+      <h3>Scanning the TV's code <span class="when">(only when you use it)</span></h3>
+      <p>Google's code scanner, part of Google Play services, reads the QR code. The camera picture stays with Google Play services; FetchKosh receives only the text of the code and has no access to your camera. Google may collect diagnostic information about the scanner under <a href="https://policies.google.com/privacy">Google's privacy policy</a>.</p>
+
+      <h3>Phone 5G for your PC <span class="when">(only when you turn it on)</span></h3>
+      <p>FetchKosh on your own Windows PC can use your phone's mobile data as one more connection for its downloads, like a hotspot used by one app. The phone announces itself on your Wi-Fi so the PC can find it, and a PC can connect only after you approve it with a code. The PC's download traffic passes through your phone to the websites it downloads from; secure (HTTPS) connections stay encrypted end to end, so the phone cannot read them. FetchKosh counts how much data your PC used today so your daily limit applies. You can remove an allowed PC at any time.</p>
+
+      <h3>Send to PC and Send to phone <span class="when">(only when you use them)</span></h3>
+      <ul>
+        <li>Only the files and links you choose are sent, straight between your phone and your own Windows PC over your home Wi-Fi. They are not uploaded to the internet, to us or to anyone else, and no mobile data is used.</li>
+        <li>Only PCs you approved with a code can send files to the phone or receive them.</li>
+        <li>Files from your PC are saved in <code>Download/FetchKosh</code> on the phone. A link you send with "Download on PC" is downloaded by your PC from that website.</li>
+      </ul>
+
+      <h3>Sharing <span class="when">(only when you tap it)</span></h3>
+      <p>"Share how fast it was" makes a picture of your download's speed on your phone. "Send to PC" in the "Get FetchKosh for Windows" card shares the download page's address. Both go only to the app you pick in Android's share menu.</p>
+    </section>
+
+    <section id="tv">
+      <h2>Android TV app</h2>
+      <p>On a TV, FetchKosh shows a code or QR code so you can connect your phone or PC, and plays the files they share over your home Wi-Fi. It keeps the list of phones and PCs you connected, and saves the files you choose to keep in <code>Download/FetchKosh</code> or in a folder you pick (such as a USB pen drive). Nothing is sent over the internet or to us.</p>
+    </section>
+
+    <section id="pc">
+      <h2>Windows app</h2>
+
+      <h3>What stays on your PC</h3>
+      <ul>
+        <li>The files you download, in the download folder you choose.</li>
+        <li>Your settings, download list and the phones and TVs you connected, in <code>%APPDATA%\FetchKosh</code>.</li>
+      </ul>
+
+      <h3>Internet connections</h3>
+      <ul>
+        <li><b>Downloads:</b> the websites of the links you add, over every connection your PC has (and your phone's mobile data if you turned that on). For YouTube links, FetchKosh asks YouTube for the video's streams, like a browser does.</li>
+        <li><b>Updates:</b> FetchKosh asks GitHub (<code>api.github.com</code>) whether a new version is out when it starts and every few hours. With "Update automatically" on, it downloads the new installer from GitHub. GitHub receives your IP address, like any website. <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub's privacy statement</a>.</li>
+        <li><b>Speed test</b> (only when you start it): test data from <code>speed.cloudflare.com</code>, as on the phone.</li>
+        <li><b>Get Android app:</b> the button and QR code open the FetchKosh page on Google Play.</li>
+      </ul>
+
+      <h3>Copied links</h3>
+      <p>With "Catch copied download links" on (you can turn it off in Settings), FetchKosh checks whether text you copy is a download link and offers to download it. The check happens on your PC; nothing is saved or sent.</p>
+
+      <h3>Your phone and TV</h3>
+      <p>Phone 5G, Send to phone and Watch on TV work over your home Wi-Fi only, with the same approval codes and rules as described for the phone app above. A shared folder is played by your TV straight from your PC; nothing is uploaded.</p>
+
+      <h3>Starting with Windows</h3>
+      <p>With "Start with Windows" on, FetchKosh starts when you sign in to Windows (through a Task Scheduler task for your user only), so unfinished downloads can continue.</p>
+    </section>
+
+    <section id="extension">
+      <h2>Browser extension</h2>
+      <p>The FetchKosh extension hands downloads from your browser to FetchKosh on the same PC. To do that it asks the browser for permission to see downloads, add a right-click menu item, keep its settings, and read the cookies of the site a download comes from.</p>
+      <ul>
+        <li>It sends the download's address, the page it came from and that site's cookies only to FetchKosh on your own PC (at <code>127.0.0.1</code>), so downloads that need you to be signed in work. Nothing is sent anywhere else.</li>
+        <li>The YouTube button sends only the video page's address, without cookies.</li>
+        <li>FetchKosh on your PC accepts these requests only from the extension, not from websites.</li>
+      </ul>
+    </section>
+
+    <section id="website">
+      <h2>This website</h2>
+      <p>fetchkosh.pages.dev is hosted by Cloudflare Pages. It sets no cookies and has no analytics or tracking. Cloudflare handles the connection and may keep standard technical logs (such as IP addresses) to run and protect the service. The page's fonts are loaded from Google Fonts, so your browser connects to Google for them. The download buttons take you to Google Play and to GitHub, where the Windows installer is stored.</p>
+    </section>
+
+    <section id="permissions">
+      <h2>Android permissions</h2>
+      <ul>
+        <li><b>Internet, network state and changing network state:</b> to download over Wi-Fi and mobile data at the same time.</li>
+        <li><b>Notifications:</b> to show download progress, finished downloads, and when sharing with your TV or PC is on.</li>
+        <li><b>Foreground service (data sync and connected device):</b> to keep downloads, TV sharing and Phone 5G for your PC running while you use other apps.</li>
+        <li><b>Wake lock:</b> so a running download doesn't stop when the screen turns off.</li>
+        <li><b>Run at startup:</b> to continue downloads you started after the phone restarts.</li>
+        <li><b>Storage (Android 9 only, for example older TVs):</b> to save files in <code>Download/FetchKosh</code>. Android 10 and newer don't need it, so FetchKosh doesn't ask for it there.</li>
+      </ul>
+      <p>FetchKosh does not ask for your contacts, location, camera or microphone, or for access to all your files. Files are shared with your TV only after you pick them with Android's own file picker.</p>
+    </section>
+
+    <section id="delete">
+      <h2>Removing your data</h2>
+      <p>Everything FetchKosh keeps is on your own devices, so you remove it there:</p>
+      <ul>
+        <li><b>Phone and TV:</b> uninstalling FetchKosh removes the download list, settings and allowed devices. Downloaded files stay in your Downloads folder until you delete them.</li>
+        <li><b>Windows:</b> uninstall FetchKosh from Settings → Apps. To also remove your settings and device list, delete the <code>%APPDATA%\FetchKosh</code> folder. Downloaded files stay where you saved them.</li>
+        <li><b>Allowed devices:</b> you can remove a TV or PC in the app at any time.</li>
+      </ul>
+      <p>Since we hold no data about you, there is nothing for us to delete; you can still write to us with any question.</p>
+    </section>
+
+    <section id="other">
+      <h2>Children</h2>
+      <p>FetchKosh is not directed at children under 13.</p>
+      <h2 style="margin-top:28px">Changes</h2>
+      <p>When this policy changes, the new version is posted on this page with a new date. If a change affects what FetchKosh collects, the app's listing on Google Play is updated at the same time.</p>
+      <h2 style="margin-top:28px">Contact</h2>
+      <p>Questions about privacy: <a href="mailto:support@buskosh.app">support@buskosh.app</a></p>
+    </section>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="brand" href="./"><img src="logo.png" alt="">FetchKosh</a>
+    <a href="./">Home</a>
+    <a href="https://github.com/patilsiddhesh23/fetchkosh/releases">Windows releases</a>
+    <span>Please only download files you have the right to download.</span>
+  </div>
+</footer>
+</body>
+</html>
