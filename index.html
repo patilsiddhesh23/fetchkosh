@@ -159,31 +159,95 @@ section.part { padding-top: 96px; }
 .lid::before { content: ""; position: absolute; top: 6px; left: 50%; width: 5px; height: 5px; margin-left: -2.5px; border-radius: 50%; background: #3a3540; }
 .base { position: relative; height: 16px; margin: 0 -30px; border-radius: 2px 2px 14px 14px; background: linear-gradient(#2c2832, #1a171e); box-shadow: 0 0 0 1px #37323e, 0 24px 30px -18px #000; }
 .base::before { content: ""; position: absolute; top: 0; left: 50%; width: 18%; height: 6px; transform: translateX(-50%); border-radius: 0 0 8px 8px; background: #141217; }
-.win { background: #0b0b0c; border-radius: 3px; color: #f5f5f6; font-size: 13px; overflow: hidden; }
-.win-bar { display: flex; align-items: center; gap: 9px; padding: 9px 12px; color: #c9c9cc; font-size: 12.5px; }
-.win-bar img { width: 16px; height: 16px; }
-.win-bar span { margin-left: auto; letter-spacing: 12px; color: #8e8e93; font-size: 13px; }
-.win-tabs { display: flex; gap: 8px; padding: 6px 16px 14px; }
-.win-tabs i { font-style: normal; padding: 5px 14px; border-radius: 16px; box-shadow: inset 0 0 0 1px #2a2a2d; }
-.win-tabs i.on { background: #f5f5f6; color: #0b0b0c; font-weight: 600; box-shadow: none; }
-.board { margin: 0 16px; border: 1px solid #2a2a2d; border-radius: 12px; display: grid; grid-template-columns: 1fr 170px max-content; align-items: center; padding: 6px 18px; }
-.board ul { list-style: none; margin: 0; padding: 0 12px 0 0; height: 150px; display: flex; flex-direction: column; justify-content: space-around; }
-.board li { display: flex; justify-content: space-between; gap: 10px; white-space: nowrap; }
+/* The Windows app as it looks now: a sidebar, purple accents */
+.win { display: grid; grid-template-columns: 128px 1fr; background: #0b0b0c; border-radius: 3px; color: #f5f5f6; font-size: 12.5px; overflow: hidden; }
+.w-side { position: relative; background: #0f0e11; border-right: 1px solid #1f1d23; padding: 12px 8px 70px; overflow: hidden; }
+.w-brand { display: flex; align-items: center; gap: 7px; padding: 0 4px 12px; font: 650 13px var(--display); }
+.w-brand img { width: 22px; height: 22px; }
+.w-nav { display: flex; align-items: center; gap: 7px; padding: 6px 7px; margin-bottom: 3px; border-radius: 8px; color: #c9c9cc; font-style: normal; }
+.w-nav svg { width: 14px; height: 14px; flex: none; }
+.w-nav.on { background: #22172e; box-shadow: inset 0 0 0 1px #6b3aa6; color: #fff; font-weight: 600; }
+.w-nav em { margin-left: auto; font-style: normal; font-size: 10px; background: #8044C6; color: #fff; border-radius: 8px; padding: 0 6px; }
+.w-wave { position: absolute; left: 0; bottom: 0; width: 100%; height: 56px; }
+.w-main { padding: 12px 14px 14px; min-width: 0; }
+.w-title { font: 650 17px var(--display); margin-bottom: 10px; }
+.board { border: 1px solid #242228; border-radius: 12px; display: grid; grid-template-columns: 132px 120px 1fr; align-items: center; padding: 8px 12px; }
+.board ul { list-style: none; margin: 0; padding: 0; height: 150px; display: flex; flex-direction: column; justify-content: space-around; }
+.board li { display: flex; justify-content: space-between; gap: 8px; white-space: nowrap; padding: 6px 8px; border: 1px solid #2a2830; border-radius: 8px; background: #121115; font-size: 11.5px; }
 .board li span { color: #a1a1a6; }
 .board li span.nb { color: inherit; }
 .board .mid { position: relative; height: 150px; }
-.board .mid svg { width: 170px; height: 150px; display: block; }
-.board .mid .path { stroke: #4a4a4f; stroke-width: 1.5; }
-.dot.pc { fill: #f5f5f6; }
-.board .mid img { position: absolute; left: 50%; top: 50%; width: 40px; height: 40px; transform: translate(-50%, -50%); }
-.board .sum { text-align: right; padding-left: 14px; }
-.board .sum b { font: 700 2rem/1 var(--display); display: block; }
-.board .sum span { color: #a1a1a6; }
-.win-row { margin: 12px 16px 16px; padding: 12px 14px; border: 1px solid #2a2a2d; border-radius: 12px; }
+.board .mid svg { width: 120px; height: 150px; display: block; }
+.board .mid .path { stroke: #5b3d80; stroke-width: 1.5; }
+.dot.pc { fill: #b98cf0; }
+.board .mid img { position: absolute; left: 50%; top: 50%; width: 34px; height: 34px; transform: translate(-50%, -50%); border-radius: 50%; box-shadow: 0 0 0 2px #8044C6; padding: 3px; background: #0b0b0c; }
+.board .sum { text-align: right; }
+.board .sum b { font: 700 1.75rem/1 var(--display); color: #c59cf2; display: block; }
+.board .sum span { color: #a1a1a6; font-size: 11px; }
+.w-head { margin: 12px 0 7px; font-weight: 600; }
+.win-row { padding: 10px 12px; border: 1px solid #242228; border-radius: 10px; }
 .win-row div { display: flex; justify-content: space-between; gap: 12px; }
-.win-row .wbar { height: 5px; border-radius: 3px; background: #2a2a2d; margin: 9px 0 7px; }
-.win-row .wbar i { display: block; width: 0; height: 100%; border-radius: 3px; background: #f5f5f6; }
+.win-row .wbar { height: 5px; border-radius: 3px; background: #2a2a2d; margin: 8px 0 6px; }
+.win-row .wbar i { display: block; width: 0; height: 100%; border-radius: 3px; background: #8044C6; }
 .win-row span { color: #a1a1a6; }
+
+/* ---------- Game Boost ---------- */
+.boost { background: var(--panel); border: 1px solid var(--line); border-radius: 24px; padding: 24px 28px 22px; min-width: 0; }
+.boost-flow { width: 100%; height: auto; display: block; }
+.boost-flow text { fill: var(--muted); font: 500 17px var(--body); }
+.boost-flow text.name { fill: var(--bright); font: 600 18px var(--display); }
+.boost-flow .plate { fill: var(--ink); stroke: var(--line); }
+.boost-flow .dev { fill: none; stroke: var(--bright); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.lanes { display: grid; gap: 18px; margin-top: 14px; padding-top: 18px; border-top: 1px solid var(--line); }
+.lane-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.lane-top b { color: var(--bright); font-weight: 600; }
+.lane-top .mbps { font: 700 1.45rem/1 var(--display); color: var(--bright); white-space: nowrap; }
+.lane-top .mbps small { font: 500 0.9rem var(--body); color: var(--muted); margin-left: 3px; }
+.lane .bar { margin: 10px 0 8px; }
+.lane.slow .bar i { background: #6f6480; }
+.lane-stats { display: flex; justify-content: space-between; gap: 12px; color: var(--muted); font-size: 0.93rem; }
+.lane-stats > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.boost .demo-note { margin-top: 16px; }
+.steps { list-style: none; padding: 0; margin: 28px 0 0; max-width: 46ch; counter-reset: s; }
+.steps li { display: grid; grid-template-columns: 30px 1fr; gap: 14px; padding: 13px 0; border-top: 1px solid var(--line); counter-increment: s; }
+.steps li::before { content: counter(s); width: 26px; height: 26px; border-radius: 7px; background: var(--panel-2); box-shadow: inset 0 0 0 1px var(--line); color: var(--lav); font: 600 0.9rem/26px var(--display); text-align: center; }
+.steps b { color: var(--bright); font-weight: 600; }
+
+/* ---------- Browser: a small desktop, drawn 560 px wide and scaled to fit ---------- */
+.scene-fit { width: 100%; max-width: 560px; margin: 0 auto; position: relative; overflow: hidden; border-radius: 18px; }
+.scene { position: absolute; left: 0; top: 0; width: 560px; height: 400px; transform-origin: 0 0; overflow: hidden;
+  background: radial-gradient(120% 90% at 85% 100%, #2a1d3a 0%, #17141b 55%); border: 1px solid var(--line); border-radius: 18px; }
+.bw { position: absolute; left: 22px; top: 22px; width: 470px; border-radius: 12px; background: #f4f2f7; color: #26222c; box-shadow: 0 30px 50px -24px #000; overflow: hidden; font-size: 13.5px; }
+.bw-bar { display: flex; align-items: center; gap: 10px; padding: 9px 12px; background: #e3dfe8; }
+.bw-dots { display: flex; gap: 6px; }
+.bw-dots i { width: 10px; height: 10px; border-radius: 50%; background: #c4bdcc; }
+.bw-url { flex: 1; background: #fff; border-radius: 14px; padding: 4px 12px; color: #6b6474; font-size: 12px; }
+.bw-ext { width: 18px; height: 18px; }
+.bw-page { padding: 16px 18px 18px; }
+.bw-h { font: 650 17px var(--display); color: #1d1a22; margin-bottom: 10px; }
+.bw-file { display: grid; grid-template-columns: 1fr auto auto; gap: 14px; align-items: center; padding: 9px 0; border-top: 1px solid #e2dee7; }
+.bw-file em { font-style: normal; color: #7a7383; font-size: 12.5px; }
+.bw-file b { font-weight: 600; font-size: 12.5px; color: #fff; background: #5a5560; border-radius: 7px; padding: 5px 11px; transition: transform .12s, background .12s; }
+.bw-file.pick b { background: #8044C6; }
+.bw-file.pick b.press { transform: scale(.92); background: #6a34a8; }
+.cursor { position: absolute; left: 0; top: 0; width: 22px; height: 22px; transition: transform .9s cubic-bezier(.3,.7,.3,1), opacity .4s; z-index: 3; }
+.toast { position: absolute; right: 14px; bottom: 50px; width: 258px; padding: 12px 14px 13px; border-radius: 10px; background: #2b2b2f; color: #f2f2f4;
+  box-shadow: 0 16px 30px -12px #000, 0 0 0 1px #3c3b41; font-size: 12.5px; line-height: 1.45; opacity: 0; transform: translateX(30px); transition: opacity .35s, transform .45s cubic-bezier(.2,.8,.2,1); z-index: 2; }
+.toast.show { opacity: 1; transform: none; }
+.toast-app { display: flex; align-items: center; gap: 7px; color: #c7c6cc; font-size: 11.5px; margin-bottom: 8px; }
+.toast-app img { width: 15px; height: 15px; }
+.toast b { display: block; font-size: 13.5px; font-weight: 600; }
+.toast span { display: block; color: #c7c6cc; }
+.taskbar { position: absolute; left: 0; right: 0; bottom: 0; height: 38px; background: #1b1a1f; border-top: 1px solid #2c2a31; display: flex; align-items: center; padding: 0 14px; gap: 10px; color: #c7c6cc; font-size: 11.5px; }
+.taskbar .tb-start { width: 18px; height: 18px; color: #9fd0ff; }
+.tb-tray { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+.tb-app { position: relative; width: 26px; height: 26px; }
+.tb-app img { position: absolute; left: 6px; top: 6px; width: 14px; height: 14px; }
+.tb-app svg { width: 26px; height: 26px; transform: rotate(-90deg); }
+.tb-app circle { fill: none; stroke-width: 2.4; }
+.tb-app .track { stroke: #34313a; }
+.tb-app .fill { stroke: #E2CFF6; stroke-dasharray: 69.1; stroke-dashoffset: 69.1; stroke-linecap: round; }
+.tb-app .fill.go { transition: stroke-dashoffset 4s linear; stroke-dashoffset: 0; }
 
 /* ---------- Together ---------- */
 .together { margin-top: 44px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
@@ -242,6 +306,8 @@ footer .brand img { width: 26px; height: 26px; }
   .hero { padding-top: 26px; }
   .demo { padding: 22px 18px 18px; border-radius: 20px; margin-top: 40px; }
   .phones { gap: 12px; }
+  .boost { padding: 20px 18px 18px; border-radius: 20px; }
+  .scene-fit { border-radius: 14px; }
   .phones .phone { border-radius: 26px; padding: 5px; }
   .phones .phone img { border-radius: 21px; }
   .tvset .phone { width: 120px; right: 0; border-radius: 20px; padding: 4px; }
@@ -269,6 +335,7 @@ footer .brand img { width: 26px; height: 26px; }
     <a href="#phone">Phone</a>
     <a href="#tv">TV</a>
     <a href="#pc">PC</a>
+    <a href="#games">Games</a>
     <a href="#together">Together</a>
   </nav>
   <a class="btn small" href="#get">Download</a>
@@ -280,7 +347,7 @@ footer .brand img { width: 26px; height: 26px; }
   <div class="hero-text">
     <h1><span class="nb">Wi-Fi</span> and mobile data, on the same download.</h1>
     <div class="hero-side">
-      <p class="lede">FetchKosh splits a file into parts and pulls them over both connections at once, so big files finish sooner. It also plays your files on your TV and moves them between your phone and PC.</p>
+      <p class="lede">FetchKosh splits a file into parts and pulls them over both connections at once, so big files finish sooner. It also plays your files on your TV, moves them between your phone and PC, and speeds up Steam and Epic Games downloads.</p>
       <div class="actions">
         <a class="btn" href="https://play.google.com/store/apps/details?id=com.kosh.fetchkosh">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 5 3.5Z"/></svg>
@@ -354,6 +421,7 @@ footer .brand img { width: 26px; height: 26px; }
         <li><b>It keeps going.</b> Downloads carry on with the screen off, and resume after a dropped network or a restart.</li>
         <li><b>Download tonight.</b> Mark a file for tonight and it runs in your night data window, only while charging if you like.</li>
         <li><b>Speed test built in.</b> Test <span class="nb">Wi-Fi</span> and mobile data, each alone and both together.</li>
+        <li><b>One tap, from anywhere.</b> A Quick Settings tile turns Phone 5G for PC on or off, and a home-screen widget shows your downloads, speed and 5G at a glance.</li>
       </ul>
     </div>
     <div class="phones">
@@ -401,35 +469,133 @@ footer .brand img { width: 26px; height: 26px; }
     <div class="laptop" id="laptop" role="img" aria-label="A laptop running FetchKosh for Windows: Ethernet, Wi-Fi and the phone's 5G feeding one download">
       <div class="lid">
         <div class="win" aria-hidden="true">
-          <div class="win-bar"><img src="logo.png" alt="">FetchKosh<span>&#8211;&#9633;&#215;</span></div>
-          <div class="win-tabs"><i class="on">Downloads</i><i>Send to phone</i><i>Watch on TV</i></div>
-          <div class="board">
-            <ul>
-              <li>Ethernet <span class="num" id="pc-eth">6.1 MB/s</span></li>
-              <li><span class="nb">Wi-Fi</span> <span class="num" id="pc-wifi">3.5 MB/s</span></li>
-              <li>Phone 5G <span class="num" id="pc-5g">2.8 MB/s</span></li>
-            </ul>
-            <div class="mid">
-              <svg viewBox="0 0 170 150">
-                <path id="b-1" class="path" d="M4 25 C58 25 50 75 85 75"/>
-                <path id="b-2" class="path" d="M4 75 H85"/>
-                <path id="b-3" class="path" d="M4 125 C58 125 50 75 85 75"/>
-                <path id="b-out" class="path" d="M85 75 H166"/>
-                <g class="dots" data-set="b"></g>
-              </svg>
-              <img src="logo.png" alt="">
-            </div>
-            <div class="sum"><b class="num" id="pc-total">12.4</b><span>MB/s total</span></div>
+          <div class="w-side">
+            <div class="w-brand"><img src="logo.png" alt="">FetchKosh</div>
+            <i class="w-nav on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>Downloads<em>2</em></i>
+            <i class="w-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6.5" y="2.5" width="11" height="19" rx="2.6"/></svg>Phone</i>
+            <i class="w-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2.5" y="4.5" width="19" height="12.5" rx="2"/><path d="M8.5 20.5h7"/></svg>TV</i>
+            <i class="w-nav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8h10a4.5 4.5 0 0 1 4.3 5.8l-1 3.4a2.3 2.3 0 0 1-3.9.9L14.5 16h-5l-1.9 2.1a2.3 2.3 0 0 1-3.9-.9l-1-3.4A4.5 4.5 0 0 1 7 8Z"/><path d="M8 11v3M6.5 12.5h3M15.5 12h.01M17.5 13.5h.01"/></svg>Game Boost</i>
+            <svg class="w-wave" viewBox="0 0 128 56" preserveAspectRatio="none"><path d="M0 46 C34 46 52 30 80 22 S118 4 128 2 V56 H0Z" fill="#2a1840"/><path d="M0 46 C34 46 52 30 80 22 S118 4 128 2" fill="none" stroke="#8044C6" stroke-width="1.6"/></svg>
           </div>
-          <div class="win-row">
-            <div><b id="pc-name">Fedora-Workstation-41.iso</b><span class="num" id="pc-pct">0%</span></div>
-            <div class="wbar"><i id="pc-bar"></i></div>
-            <div><span class="num" id="pc-size">0 MB of 2.3 GB</span><span class="num" id="pc-left"></span></div>
+          <div class="w-main">
+            <div class="w-title">Downloads</div>
+            <div class="board">
+              <ul>
+                <li>Ethernet <span class="num" id="pc-eth">6.1 MB/s</span></li>
+                <li><span class="nb">Wi-Fi</span> <span class="num" id="pc-wifi">3.5 MB/s</span></li>
+                <li>Phone 5G <span class="num" id="pc-5g">2.8 MB/s</span></li>
+              </ul>
+              <div class="mid">
+                <svg viewBox="0 0 120 150">
+                  <path id="b-1" class="path" d="M2 25 C36 25 32 75 60 75"/>
+                  <path id="b-2" class="path" d="M2 75 H60"/>
+                  <path id="b-3" class="path" d="M2 125 C36 125 32 75 60 75"/>
+                  <path id="b-out" class="path" d="M60 75 H118"/>
+                  <g class="dots" data-set="b"></g>
+                </svg>
+                <img src="logo.png" alt="">
+              </div>
+              <div class="sum"><b class="num" id="pc-total">12.4</b><span>MB/s total</span></div>
+            </div>
+            <div class="w-head">Active downloads</div>
+            <div class="win-row">
+              <div><b id="pc-name">Fedora-Workstation-41.iso</b><span class="num" id="pc-pct">0%</span></div>
+              <div class="wbar"><i id="pc-bar"></i></div>
+              <div><span class="num" id="pc-size">0 MB of 2.3 GB</span><span class="num" id="pc-left"></span></div>
+            </div>
           </div>
         </div>
       </div>
       <div class="base"></div>
     </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Game Boost ============================ -->
+<section class="wrap part" id="games">
+  <div class="split flip">
+    <div class="copy">
+      <div class="where"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8h10a4.5 4.5 0 0 1 4.3 5.8l-1 3.4a2.3 2.3 0 0 1-3.9.9L14.5 16h-5l-1.9 2.1a2.3 2.3 0 0 1-3.9-.9l-1-3.4A4.5 4.5 0 0 1 7 8Z"/><path d="M8 11v3M6.5 12.5h3M15.5 12h.01M17.5 13.5h.01"/></svg>Game Boost, on your Windows PC</div>
+      <h2>Steam and Epic Games downloads, over every connection.</h2>
+      <p>Game Boost hands the pieces of a game to all your connections at once: Ethernet, <span class="nb">Wi-Fi</span> and your phone's 5G. Steam or Epic Games still does the downloading and installs the game as usual.</p>
+      <ol class="steps">
+        <li><span><b>Switch on Steam or Epic Games</b> in the Game Boost tab. The first time, Windows shows a pop-up called "User Account Control": click Yes.</span></li>
+        <li><span><b>Restart the launcher.</b></span></li>
+        <li><span><b>Download your game</b> and keep FetchKosh open while it runs.</span></li>
+      </ol>
+      <p class="fine">Switch it off, or close FetchKosh, and Steam and Epic Games download the normal way again. Not getting more speed? The Game Boost tab checks what's missing.</p>
+    </div>
+    <div class="boost" id="boost">
+      <svg class="boost-flow" viewBox="0 0 540 170" role="img" aria-label="Wi-Fi and the phone's 5G both feed FetchKosh, which feeds Steam and Epic Games">
+        <defs>
+          <symbol id="pad" viewBox="0 0 24 24"><g fill="none" stroke="#E2CFF6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8h10a4.5 4.5 0 0 1 4.3 5.8l-1 3.4a2.3 2.3 0 0 1-3.9.9L14.5 16h-5l-1.9 2.1a2.3 2.3 0 0 1-3.9-.9l-1-3.4A4.5 4.5 0 0 1 7 8Z"/><path d="M8 11v3M6.5 12.5h3M15.5 12h.01M17.5 13.5h.01" stroke-width="2.2"/></g></symbol>
+        </defs>
+        <path id="g-wifi" class="path wifi" d="M96 40 C190 40 205 85 286 85"/>
+        <path id="g-5g" class="path mob" d="M96 130 C190 130 205 85 286 85"/>
+        <path id="g-steam" class="path out" d="M294 85 C340 85 350 47 392 47"/>
+        <path id="g-epic" class="path out" d="M294 85 C340 85 350 123 392 123"/>
+        <g class="dots" data-set="g"></g>
+        <text class="name" x="0" y="46">Wi-Fi</text>
+        <text class="name" x="0" y="136">Phone 5G</text>
+        <image href="logo.png" x="266" y="61" width="48" height="48"/>
+        <rect class="plate" x="392" y="20" width="146" height="54" rx="15"/>
+        <use href="#pad" x="404" y="33" width="28" height="28"/>
+        <text class="name" x="440" y="53">Steam</text>
+        <rect class="plate" x="392" y="96" width="146" height="54" rx="15"/>
+        <use href="#pad" x="404" y="109" width="28" height="28"/>
+        <text class="name" x="440" y="129">Epic Games</text>
+      </svg>
+      <div class="lanes num">
+        <div class="lane slow">
+          <div class="lane-top"><b><span class="nb">Wi-Fi</span> alone</b><span class="mbps">26.3<small>Mbps</small></span></div>
+          <div class="bar"><i id="ln-1"></i></div>
+          <div class="lane-stats"><span id="ln-1a">0 of 40 GB</span><span id="ln-1b"></span></div>
+        </div>
+        <div class="lane">
+          <div class="lane-top"><b><span class="nb">Wi-Fi</span> + phone 5G</b><span class="mbps">42.9<small>Mbps</small></span></div>
+          <div class="bar"><i id="ln-2"></i></div>
+          <div class="lane-stats"><span id="ln-2a">0 of 40 GB</span><span id="ln-2b"></span></div>
+        </div>
+      </div>
+      <p class="demo-note">Speeds measured on our test PC with a Steam download; the race is sped up. Your gain depends on your own connections.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Browser ============================ -->
+<section class="wrap part" id="browser">
+  <div class="split">
+    <div class="copy">
+      <div class="where"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 3.8 5.8 3.8 9s-1.2 6.2-3.8 9c-2.6-2.8-3.8-5.8-3.8-9S9.4 5.8 12 3Z"/></svg>With your browser</div>
+      <h2>Click download in your browser. FetchKosh takes it from there.</h2>
+      <p>The FetchKosh extension for Chrome, Edge and Brave hands your browser's downloads to the Windows app. It comes with the app, and the app shows you how to add it.</p>
+      <ul class="points">
+        <li><b>You know when it starts and when it's done.</b> "Download started" from the browser, then "Download complete" from Windows, with the file's size and folder.</li>
+        <li><b>Sorted for you.</b> Videos, music, archives, programs, documents and pictures each land in their own folder.</li>
+        <li><b>Already have it?</b> FetchKosh tells you before it downloads the same file again.</li>
+        <li><b>Many links at once.</b> Paste a whole list, keep the file types you want, and they download a few at a time.</li>
+      </ul>
+    </div>
+    <div class="scene-fit" id="scene-fit">
+      <div class="scene" id="scene" role="img" aria-label="A browser download goes to FetchKosh: a Download started notice, then a Download complete notice from Windows">
+        <div class="bw" aria-hidden="true">
+          <div class="bw-bar"><span class="bw-dots"><i></i><i></i><i></i></span><span class="bw-url">files.example.com/downloads</span><img class="bw-ext" src="logo.png" alt=""></div>
+          <div class="bw-page">
+            <div class="bw-h">Downloads</div>
+            <div class="bw-file"><span>setup-2.4.exe</span><em>120 MB</em><b>Download</b></div>
+            <div class="bw-file pick"><span>photos-2026.zip</span><em>1.2 GB</em><b id="bw-btn">Download</b></div>
+            <div class="bw-file"><span>user-manual.pdf</span><em>8 MB</em><b>Download</b></div>
+          </div>
+        </div>
+        <svg class="cursor" id="cursor" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 2.5 19.5 12l-6.3 1.4-3.4 6.1Z" fill="#fff" stroke="#111" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        <div class="toast" id="toast-a" aria-hidden="true"><div class="toast-app"><img src="logo.png" alt="">FetchKosh extension</div><b>Download started</b><span>photos-2026.zip</span><span>Downloading in FetchKosh</span></div>
+        <div class="toast" id="toast-b" aria-hidden="true"><div class="toast-app"><img src="logo.png" alt="">FetchKosh</div><b>Download complete</b><span>photos-2026.zip</span><span>1.2 GB &middot; in Downloads\Compressed</span></div>
+        <div class="taskbar" aria-hidden="true">
+          <svg class="tb-start" viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.2 10.5 4v7.5H3V5.2ZM11.7 3.8 21 2.4v9.1h-9.3V3.8ZM3 12.6h7.5V20L3 18.8v-6.2Zm8.7 0H21v9l-9.3-1.4v-7.6Z"/></svg>
+          <span class="tb-tray"><span class="tb-app"><svg viewBox="0 0 26 26"><circle class="track" cx="13" cy="13" r="11"/><circle class="fill" id="ring" cx="13" cy="13" r="11"/></svg><img src="logo.png" alt=""></span><span class="num">10:42</span></span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -478,6 +644,10 @@ footer .brand img { width: 26px; height: 26px; }
     <div><h3>Google Drive links</h3><p>Big shared files download directly, without the "can't scan this file for viruses" page.</p></div>
     <div><h3>How much faster was it?</h3><p>After a download, see the time saved over <span class="nb">Wi-Fi</span> alone and share it as a picture.</p></div>
     <div><h3>Dark and light</h3><p>One switch at the top of the phone app.</p></div>
+    <div><h3>When downloads finish</h3><p>On Windows, choose to put the PC to sleep or shut it down once everything is in. It stays awake until then.</p></div>
+    <div><h3>Drag files to your phone</h3><p>Drop files from File Explorer onto the Phone page and they go over <span class="nb">Wi-Fi</span>, with no mobile data used.</p></div>
+    <div><h3>Starts quietly</h3><p>With Windows, FetchKosh waits in the tray, ready for your browser downloads, without opening a window.</p></div>
+    <div><h3>Updates itself</h3><p>The Windows app gets new versions by itself; the update row under Settings shows how far along it is.</p></div>
     <div><h3>Private</h3><p>No account or sign-in. Your downloads and settings stay on your devices, and a TV or PC connects only after you approve it.</p></div>
   </div>
 </section>
@@ -497,7 +667,7 @@ footer .brand img { width: 26px; height: 26px; }
       </div>
       <div>
         <h3>Windows PC</h3>
-        <p>Windows 10 and 11, about 46 MB. It updates itself when a new version is out.</p>
+        <p>Windows 10 and 11, about 48 MB. It updates itself when a new version is out.</p>
         <a class="btn" href="https://github.com/patilsiddhesh23/fetchkosh/releases/latest/download/FetchKosh-setup.exe">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>
           Download for Windows</a>
@@ -554,6 +724,7 @@ footer .brand img { width: 26px; height: 26px; }
   // The map: slow, one or two dots a line. The last value true = travels the other way.
   dots("m", [["m-pt", "mob", 2, 6, 3.2], ["m-ct", "wifi", 2, 6, 3.2], ["m-pc", "out", 1, 5, 3.2], ["m-pc", "out", 1, 5, 3.2, true], ["m-5g", "amber", 2, 5, 3.2]]);
   dots("b", [["b-1", "pc", 2, 1.6, 2.6], ["b-2", "pc", 2, 1.4, 2.6], ["b-3", "pc", 2, 1.9, 2.6], ["b-out", "pc", 2, 1.2, 2.6]]);
+  dots("g", [["g-wifi", "wifi", 3, 2.2, 4], ["g-5g", "mob", 3, 2.6, 4], ["g-steam", "out", 2, 1.5, 4], ["g-epic", "out", 2, 1.5, 4]]);
   document.querySelectorAll(".dot.amber").forEach(function (c) { c.style.fill = "#FFB400"; });
 
   // ---- The download demo. Change the example files and speeds here. ----
@@ -662,9 +833,82 @@ footer .brand img { width: 26px; height: 26px; }
   if (window.ResizeObserver) new ResizeObserver(fitLaptop).observe(fit); else window.addEventListener("resize", fitLaptop);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitLaptop);
 
-  show(); pcShow();
-  if (!still) setInterval(function () { step(); pcStep(); }, 100);
-  else { done = FILES[0].mb * 0.42; show(); }   // reduced motion: one still frame; the switch still works
+  // ---- Game Boost: the same game over Wi-Fi alone and Wi-Fi + phone 5G (measured speeds) ----
+  var GAME_GB = 40, LANES = [26.3, 42.9];          // Mbps
+  var GAME_FASTER = 1250;                          // the race runs this many times faster than real life
+  var race = 0, raceRest = 0;                      // seconds of real life so far; pause after both finish
+  function hm(s) { s = Math.round(s / 60); return (s >= 60 ? Math.floor(s / 60) + "h " : "") + (s % 60) + "m"; }
+  function raceShow() {
+    var mb = GAME_GB * 8000, slowest = mb / LANES[0];
+    LANES.forEach(function (mbps, k) {
+      var need = mb / mbps, frac = Math.min(1, race / need), n = k + 1;
+      $("ln-" + n).style.width = (100 * frac).toFixed(1) + "%";
+      if (frac >= 1) {
+        $("ln-" + n + "a").innerHTML = '<span class="file-done">Done in ' + hm(need) + "</span>";
+        $("ln-" + n + "b").textContent = k ? hm(slowest - need) + " sooner" : "";
+      } else {
+        $("ln-" + n + "a").textContent = (GAME_GB * frac).toFixed(1) + " of " + GAME_GB + " GB";
+        $("ln-" + n + "b").textContent = hm(need - race) + " left";
+      }
+    });
+  }
+  function raceStep() {
+    if (raceRest > 0) { raceRest -= 0.1; if (raceRest <= 0) race = 0; raceShow(); return; }
+    race += 0.1 * GAME_FASTER;
+    if (race >= GAME_GB * 8000 / LANES[0]) { race = GAME_GB * 8000 / LANES[0]; raceRest = 3.5; }
+    raceShow();
+  }
+
+  // ---- The browser scene: click Download, "Download started", the tray ring fills, "Download complete" ----
+  var scene = $("scene"), sceneFit = $("scene-fit"), cur = $("cursor"), btn = $("bw-btn"), ring = $("ring");
+  var timers = [];
+  function sceneScale() { return sceneFit.clientWidth / 560; }
+  function later(ms, fn) { timers.push(setTimeout(fn, ms)); }
+  function play() {
+    timers.forEach(clearTimeout); timers = [];
+    $("toast-a").classList.remove("show"); $("toast-b").classList.remove("show");
+    ring.classList.remove("go"); ring.style.strokeDashoffset = "";
+    cur.style.transition = "none"; cur.style.opacity = "1"; cur.style.transform = "translate(330px, 330px)";
+    void cur.offsetWidth; cur.style.transition = "";
+    later(300, function () {
+      var k = sceneScale(), r = btn.getBoundingClientRect(), s = scene.getBoundingClientRect();
+      var x = (r.left - s.left) / k + r.width / (2 * k) - 4, y = (r.top - s.top) / k + r.height / (2 * k) - 3;
+      cur.style.transform = "translate(" + x + "px, " + y + "px)";
+    });
+    later(1300, function () { btn.classList.add("press"); });
+    later(1450, function () { btn.classList.remove("press"); });
+    later(1650, function () { $("toast-a").classList.add("show"); ring.classList.add("go"); });
+    later(2600, function () { cur.style.opacity = "0"; });
+    later(4500, function () { $("toast-a").classList.remove("show"); });
+    later(5900, function () { $("toast-b").classList.add("show"); });
+    later(9600, function () { $("toast-b").classList.remove("show"); });
+    later(10400, play);
+  }
+  function fitScene() {
+    var k = sceneScale();
+    scene.style.transform = "scale(" + k + ")";
+    sceneFit.style.height = Math.ceil(400 * k) + "px";
+  }
+  fitScene();
+  if (window.ResizeObserver) new ResizeObserver(fitScene).observe(sceneFit); else window.addEventListener("resize", fitScene);
+
+  show(); pcShow(); raceShow();
+  if (!still) {
+    setInterval(function () { step(); pcStep(); raceStep(); }, 100);
+    // The scene plays while it's on screen
+    if (window.IntersectionObserver) {
+      var playing = false;
+      new IntersectionObserver(function (e) {
+        var vis = e[0].isIntersecting;
+        if (vis && !playing) { playing = true; play(); }
+        if (!vis && playing) { playing = false; timers.forEach(clearTimeout); timers = []; }
+      }, { threshold: 0.35 }).observe(sceneFit);
+    } else play();
+  } else {
+    done = FILES[0].mb * 0.42; show();   // reduced motion: one still frame; the switch still works
+    race = GAME_GB * 8000 / LANES[0]; raceShow();
+    cur.style.opacity = "0"; $("toast-b").classList.add("show"); ring.style.strokeDashoffset = "0";
+  }
 })();
 </script>
 </body>
