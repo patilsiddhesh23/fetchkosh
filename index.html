@@ -373,11 +373,28 @@ footer .brand img { width: 26px; height: 26px; }
 .verify button { font: 600 0.88rem var(--body); color: var(--bright); background: transparent; border: 0; box-shadow: inset 0 0 0 1px #4a4257; border-radius: 9px; padding: 7px 13px; cursor: pointer; }
 .verify button:hover { background: var(--panel-2); }
 
+/* ---------- Support ---------- */
+.support { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 56px; align-items: center; }
+.support .copy > p { max-width: 46ch; }
+.tabs-s { display: flex; gap: 8px; margin: 26px 0 0; }
+.tabs-s button { font: 600 0.95rem var(--body); color: var(--text); background: transparent; border: 0; box-shadow: inset 0 0 0 1px #4a4257;
+  border-radius: 10px; padding: 9px 15px; cursor: pointer; }
+.tabs-s button[aria-selected="true"] { background: var(--purple); color: #fff; box-shadow: none; }
+.coffee-btn { display: inline-block; margin-top: 22px; border-radius: 12px; }
+.coffee-btn img { width: 218px; height: auto; }
+.coffee-btn:hover { filter: brightness(1.06); }
+.coffee-btn[hidden] { display: none; }
+.qr-card { width: 268px; background: #fff; border-radius: 26px; padding: 16px; box-shadow: 0 30px 60px -30px #000; }
+.qr-card img { width: 236px; height: 236px; display: block; image-rendering: auto; }
+.qr-note { margin-top: 12px; color: var(--muted); font-size: 0.9rem; text-align: center; max-width: 268px; }
+
 /* ---------- "Your download has started": next steps ---------- */
-.ns { position: fixed; right: 22px; bottom: 22px; z-index: 60; width: 380px; max-width: calc(100vw - 32px); background: #1a1620; border: 1px solid #3a3346;
+.ns { position: fixed; right: 18px; bottom: 96px; z-index: 10000; width: 380px; max-width: calc(100vw - 32px); background: #1a1620; border: 1px solid #3a3346;
   border-radius: 18px; padding: 20px 22px 18px; box-shadow: 0 30px 60px -20px #000; opacity: 0; transform: translateY(18px); pointer-events: none;
   transition: opacity .3s, transform .45s cubic-bezier(.2,.8,.2,1); }
 .ns.show { opacity: 1; transform: none; pointer-events: auto; }
+/* While the next steps are open, the Buy Me a Coffee widget's own message bubble steps aside (its button stays). */
+body.ns-open #bmc-wbtn + div { display: none !important; }
 .ns-kick { color: var(--lav); font: 600 0.78rem var(--body); letter-spacing: 0.12em; text-transform: uppercase; }
 .ns h3 { font-size: 1.35rem; margin: 2px 0 12px; }
 .ns ol { list-style: none; padding: 0; margin: 0; counter-reset: n; }
@@ -398,6 +415,8 @@ footer .brand img { width: 26px; height: 26px; }
   .setup-grid > div { padding: 28px 0; border-left: 0; border-top: 1px solid var(--line); }
   .setup-grid > div:first-child { border-top: 0; padding-top: 0; }
   .faq-grid > div + div { margin-top: 36px; }
+  .support { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .support .qr-wrap { justify-self: center; }
   .split.flip > .copy { order: 0; }
   .get-grid { grid-template-columns: 1fr; }
   .get-grid > div { padding: 30px 0; border-left: 0; border-top: 1px solid var(--line); }
@@ -430,7 +449,7 @@ footer .brand img { width: 26px; height: 26px; }
   .proof-grid > div { padding: 18px 14px 18px 0; }
   .proof-grid > div + div { padding-left: 14px; }
   .proof-grid > div:nth-child(3) { padding-left: 0; }
-  .ns { right: 16px; bottom: 16px; padding: 18px 18px 16px; }
+  .ns { right: 16px; bottom: 92px; padding: 18px 18px 16px; }
   .quota-fit { border-radius: 16px; }
   .map, .qr { display: none; }
 }
@@ -926,6 +945,24 @@ footer .brand img { width: 26px; height: 26px; }
     </div>
   </div>
 </section>
+<!-- ============================ Support ============================ -->
+<section class="wrap part" id="support">
+  <div class="support">
+    <div class="copy">
+      <h2>Like FetchKosh? Buy me a coffee.</h2>
+      <p>FetchKosh is free. If it saves you time, a coffee keeps it going. Thank you!</p>
+      <div class="tabs-s" role="tablist" aria-label="How to support" id="s-tabs">
+        <button type="button" role="tab" data-k="upi" aria-selected="false">UPI (India)</button>
+        <button type="button" role="tab" data-k="coffee" aria-selected="true">Buy Me a Coffee</button>
+      </div>
+      <a class="coffee-btn" id="s-btn" href="https://buymeacoffee.com/siddhesh23"><img src="img/coffee-button.webp" width="436" height="122" alt="Buy me a coffee"></a>
+    </div>
+    <div class="qr-wrap">
+      <div class="qr-card"><img id="s-qr" src="img/coffee-qr.webp" width="600" height="600" alt="QR code for Buy Me a Coffee" loading="lazy"></div>
+      <p class="qr-note" id="s-note">Scan with your phone's camera.</p>
+    </div>
+  </div>
+</section>
 </main>
 
 <!-- "Your download has started": shown after a Windows download button is clicked -->
@@ -944,6 +981,7 @@ footer .brand img { width: 26px; height: 26px; }
 <footer>
   <div class="wrap">
     <a class="brand" href="#"><img src="logo.png" alt="">FetchKosh</a>
+    <a href="#support">Support</a>
     <a href="privacy">Privacy policy</a>
     <a href="https://github.com/patilsiddhesh23/fetchkosh/releases">Windows releases</a>
     <span>Please only download files you have the right to download.</span>
@@ -1226,9 +1264,36 @@ footer .brand img { width: 26px; height: 26px; }
     });
   });
 
+  // ---- Support: UPI first for visitors in India, Buy Me a Coffee first for everyone else ----
+  var SUPPORT = {
+    upi: { qr: "img/upi-qr.png", alt: "UPI QR code", note: "Scan with any UPI app: Google Pay, PhonePe, Paytm or BHIM." },
+    coffee: { qr: "img/coffee-qr.webp", alt: "QR code for Buy Me a Coffee", note: "Scan with your phone's camera." }
+  };
+  function inIndia() {
+    try {
+      var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+      if (tz === "Asia/Kolkata" || tz === "Asia/Calcutta") return true;
+    } catch (e) {}
+    return (navigator.languages || [navigator.language || ""]).some(function (l) { return /-IN$/i.test(l); });
+  }
+  var sTabs = $("s-tabs");
+  function showSupport(k) {
+    var x = SUPPORT[k];
+    $("s-qr").src = x.qr; $("s-qr").alt = x.alt; $("s-note").textContent = x.note;
+    sTabs.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-selected", b.dataset.k === k); });
+    $("s-btn").hidden = k === "upi";
+  }
+  var india = inIndia();
+  if (!india) sTabs.appendChild(sTabs.firstElementChild);   // Buy Me a Coffee first, UPI second
+  sTabs.querySelectorAll("button").forEach(function (b) { b.addEventListener("click", function () { showSupport(b.dataset.k); }); });
+  showSupport(india ? "upi" : "coffee");
+
   // ---- "Your download has started": next steps after a Windows download button ----
   var ns = $("ns");
-  function nsShow(on) { ns.classList.toggle("show", on); ns.setAttribute("aria-hidden", on ? "false" : "true"); }
+  function nsShow(on) {
+    ns.classList.toggle("show", on); ns.setAttribute("aria-hidden", on ? "false" : "true");
+    document.body.classList.toggle("ns-open", on);
+  }
   document.querySelectorAll("a[data-win]").forEach(function (a) {
     a.addEventListener("click", function () { setTimeout(function () { nsShow(true); }, 250); });
   });
@@ -1256,5 +1321,7 @@ footer .brand img { width: 26px; height: 26px; }
   }
 })();
 </script>
+<!-- Buy Me a Coffee: the floating button at the bottom right (its own script) -->
+<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="siddhesh23" data-description="Support me on Buy me a coffee!" data-message="Support my journey as an indie developer! ☕ I'm building VillaKosh, PrintKosh, FetchKosh, and BusKosh—useful digital tools designed to make everyday life easier. Every coffee helps me build, improve, and launch more ideas. Thank you for being part of the Kosh journey!" data-color="#BD5FFF" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
 </body>
 </html>
