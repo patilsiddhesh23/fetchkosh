@@ -278,6 +278,9 @@ section.part { padding-top: 96px; }
 .get-grid h3 { font-size: 1.35rem; margin-bottom: 8px; }
 .get-grid p { color: var(--muted); margin-bottom: 20px; min-height: 4.6em; }
 .get-grid .fine { margin-top: 16px; }
+.get-grid .test-steps { margin: 0 0 20px; }
+.get-grid .test-steps li { font-size: 0.95rem; color: var(--text); }
+.get-grid .test-steps a { color: var(--lav); }
 .qr { display: flex; align-items: center; gap: 16px; margin-top: 22px; color: var(--muted); font-size: 0.9rem; }
 .qr img { width: 104px; height: 104px; border-radius: 8px; flex: none; }
 .smart { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line); color: var(--muted); max-width: 78ch; }
@@ -484,14 +487,14 @@ body.ns-open #bmc-wbtn + div { display: none !important; }
     <div class="hero-side">
       <p class="lede">FetchKosh splits a file into parts and pulls them over both connections at once, so big files finish sooner. It also plays your files on your TV, moves them between your phone and PC, and speeds up Steam and Epic Games downloads.</p>
       <div class="actions">
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.kosh.fetchkosh">
+        <a class="btn" href="#android-test">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 5 3.5Z"/></svg>
-          Get it on Google Play</a>
+          Join the Android test</a>
         <a class="btn quiet" data-win href="https://github.com/patilsiddhesh23/fetchkosh/releases/latest/download/FetchKosh-setup.exe">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.2 10.5 4v7.5H3V5.2ZM11.7 3.8 21 2.4v9.1h-9.3V3.8ZM3 12.6h7.5V20L3 18.8v-6.2Zm8.7 0H21v9l-9.3-1.4v-7.6Z"/></svg>
           Download for Windows</a>
       </div>
-      <p class="fine">Free. No account needed.</p>
+      <p class="fine">Free. No account needed. The Android app is in testing on Google Play.</p>
     </div>
   </div>
 
@@ -877,11 +880,11 @@ body.ns-open #bmc-wbtn + div { display: none !important; }
       <h3>Your phone's 5G for the PC</h3>
       <p class="sub">Optional: one more connection for the PC.</p>
       <ol class="steps">
-        <li><span><b>Get FetchKosh on your phone</b> from Google Play.</span></li>
+        <li><span><b>Get FetchKosh on your phone:</b> <a href="#android-test">join the Android test</a> on Google Play.</span></li>
         <li><span>On the phone: <b>PC tab</b>, then switch on <b>Phone 5G for your PC</b>. Phone and PC on the same <span class="nb">Wi-Fi</span>.</span></li>
         <li><span>The PC shows the phone. <b>Pair once</b> with the code, and set a daily data limit if you like.</span></li>
       </ol>
-      <a class="btn small quiet" href="https://play.google.com/store/apps/details?id=com.kosh.fetchkosh">Get it on Google Play</a>
+      <a class="btn small quiet" href="#android-test">Join the Android test</a>
     </div>
   </div>
 </section>
@@ -915,13 +918,18 @@ body.ns-open #bmc-wbtn + div { display: none !important; }
   <div class="wrap">
     <h2>Get FetchKosh.</h2>
     <div class="get-grid">
-      <div>
+      <div id="android-test">
         <h3>Android phone</h3>
-        <p>Android 9 or newer. Downloads over <span class="nb">Wi-Fi</span> and mobile data together.</p>
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.kosh.fetchkosh">
+        <p>Android 9 or newer. In testing on Google Play: join in three steps.</p>
+        <ol class="steps test-steps">
+          <li><span><b>Join the group</b> <a href="https://groups.google.com/g/kosh-tester">kosh-tester</a> with the Google account on your phone.</span></li>
+          <li><span><b>Become a tester</b> on <a href="https://play.google.com/apps/testing/com.kosh.fetchkosh">Google Play's test page</a>.</span></li>
+          <li><span><b>Install</b> <a href="https://play.google.com/store/apps/details?id=com.kosh.fetchkosh">FetchKosh from Google Play</a>. It can take a few minutes to show up.</span></li>
+        </ol>
+        <a class="btn" href="https://groups.google.com/g/kosh-tester">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 5 3.5Z"/></svg>
-          Get it on Google Play</a>
-        <div class="qr"><img src="img/play-qr.svg" width="104" height="104" alt="QR code that opens FetchKosh on Google Play">On a computer? Scan this with your phone's camera.</div>
+          Join the Android test</a>
+        <div class="qr"><img src="img/test-qr.svg" width="104" height="104" alt="QR code that opens the kosh-tester group">On a computer? Scan this with your phone to join the test.</div>
       </div>
       <div>
         <h3>Windows PC</h3>
@@ -933,7 +941,7 @@ body.ns-open #bmc-wbtn + div { display: none !important; }
       </div>
       <div>
         <h3>Android TV</h3>
-        <p>Android 9 or newer. Open Google Play on the TV and search for FetchKosh.</p>
+        <p>Android 9 or newer. After joining the test with the same Google account, open Google Play on the TV and search for FetchKosh.</p>
         <p class="fine" style="margin-top:0">Then on your phone: FetchKosh, TV tab, Scan the TV's code.</p>
       </div>
     </div>
