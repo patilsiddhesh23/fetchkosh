@@ -268,6 +268,7 @@ section.part { padding-top: 96px; }
 .small-things div { padding: 20px 0; border-top: 1px solid var(--line); }
 .small-things h3 { margin-bottom: 5px; }
 .small-things p { color: var(--muted); max-width: 46ch; }
+.small-things code { font: 500 0.88em ui-monospace, "Cascadia Mono", Consolas, monospace; background: var(--panel-2); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; color: var(--bright); }
 
 /* ---------- Download ---------- */
 .get { margin-top: 96px; background: var(--panel); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 84px 0; }
@@ -287,9 +288,116 @@ footer a { color: var(--muted); }
 footer .brand { font-size: 1.05rem; margin-right: auto; }
 footer .brand img { width: 26px; height: 26px; }
 
+
+/* ---------- Numbers strip ---------- */
+.proof { margin-top: 30px; }
+.proof-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.proof-grid > div { padding: 22px 24px 22px 0; }
+.proof-grid > div + div { padding-left: 24px; border-left: 1px solid var(--line); }
+.proof-grid b { display: block; font: 700 clamp(1.9rem, 3vw, 2.6rem)/1 var(--display); color: var(--bright); letter-spacing: -0.03em; margin-bottom: 8px; }
+.proof-grid b em { font-style: normal; color: var(--lav); }
+.proof-grid span { color: var(--muted); font-size: 0.95rem; display: block; max-width: 27ch; }
+
+/* ---------- Your data, your rules: a phone with a daily limit, drawn 560 px wide and scaled to fit ---------- */
+.quota-fit { width: 100%; max-width: 560px; margin: 0 auto; position: relative; overflow: hidden; border-radius: 22px; }
+.quota { position: absolute; left: 0; top: 0; width: 560px; height: 336px; transform-origin: 0 0; background: var(--panel); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; }
+.q-row { position: absolute; left: 22px; width: 288px; background: var(--ink); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; display: grid; grid-template-columns: 26px 1fr auto; column-gap: 11px; align-items: center; transition: border-color .4s; }
+.q-row svg { width: 24px; height: 24px; color: var(--purple); }
+.q-row.mob svg { color: var(--lav); }
+.q-row b { display: block; color: var(--bright); font-weight: 600; font-size: 15px; line-height: 1.25; }
+.q-row .st { display: block; color: var(--muted); font-size: 12.5px; white-space: nowrap; }
+.q-row .sp { color: var(--muted); font-size: 13px; align-self: start; margin-top: 2px; white-space: nowrap; }
+.q-row .meter { grid-column: 2 / 4; height: 5px; border-radius: 3px; background: #2a2630; margin-top: 9px; overflow: hidden; }
+.q-row .meter i { display: block; height: 100%; width: 64%; background: var(--lav); border-radius: 3px; transition: background .4s; }
+.quota.capped .q-row.mob { border-color: #5a3a2a; }
+.quota.capped .q-row.mob .st { color: #f0883e; }
+.quota.capped .q-row.mob .meter i { background: #f0883e; }
+.quota.capped .q-row.mob svg { color: #6a6272; }
+.quota .lines-q { position: absolute; left: 0; top: 0; width: 560px; height: 230px; }
+.quota.capped .path.mob { stroke: #3a3442; opacity: 1; }
+.quota.capped .dot.mob { display: none; }
+.q-logo { position: absolute; left: 366px; top: 92px; width: 50px; height: 50px; border-radius: 50%; box-shadow: 0 0 0 2px var(--purple); padding: 4px; background: var(--ink); }
+.q-total { position: absolute; left: 434px; top: 60px; text-align: right; width: 104px; }
+.q-total b { font: 700 30px/1 var(--display); color: var(--bright); letter-spacing: -0.02em; }
+.q-total span { display: block; color: var(--muted); font-size: 12.5px; margin-top: 4px; }
+.q-file { position: absolute; left: 22px; right: 22px; bottom: 20px; background: var(--ink); border: 1px solid var(--line); border-radius: 14px; padding: 13px 16px 12px; font-size: 13.5px; }
+.q-file div { display: flex; justify-content: space-between; gap: 12px; }
+.q-file b { color: var(--bright); font-weight: 600; }
+.q-file span { color: var(--muted); }
+.q-file .bar { margin: 9px 0 7px; height: 6px; }
+.q-toast { position: absolute; right: 14px; bottom: 14px; width: 262px; padding: 11px 13px 12px; border-radius: 10px; background: #2b2b2f; color: #f2f2f4;
+  box-shadow: 0 16px 30px -12px #000, 0 0 0 1px #3c3b41; font-size: 12.5px; line-height: 1.45; opacity: 0; transform: translateX(24px); transition: opacity .35s, transform .45s cubic-bezier(.2,.8,.2,1); z-index: 2; }
+.q-toast.show { opacity: 1; transform: none; }
+.q-toast .toast-app { margin-bottom: 6px; }
+.q-day { position: absolute; left: 22px; top: 14px; font-size: 12px; color: var(--muted); }
+
+/* ---------- Setup ---------- */
+.setup-grid { margin-top: 40px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.setup-grid > div { padding: 0 32px; border-left: 1px solid var(--line); min-width: 0; }
+.setup-grid > div:first-child { padding-left: 0; border-left: 0; }
+.setup-grid h3 { font-size: 1.3rem; margin-bottom: 4px; }
+.setup-grid .sub { color: var(--muted); font-size: 0.95rem; }
+.setup-grid .steps { margin-top: 18px; }
+.setup-grid .steps li { font-size: 0.97rem; }
+.setup-grid .btn { margin-top: 18px; }
+.setup-grid code, .ns code, .verify code { font: 500 0.88em ui-monospace, "Cascadia Mono", Consolas, monospace; background: var(--panel-2); border: 1px solid var(--line); border-radius: 6px; padding: 1px 6px; color: var(--bright); }
+/* The Windows warning, drawn */
+.smartscreen { margin-top: 18px; background: #0f3a63; color: #fff; border-radius: 10px; padding: 14px 16px 14px; font: 13px/1.45 "Segoe UI", var(--body); max-width: 330px; box-shadow: 0 20px 40px -24px #000; }
+.smartscreen b { display: block; font: 600 17px "Segoe UI", var(--body); margin-bottom: 6px; }
+.smartscreen p { color: #d7e4f2; font-size: 12.5px; }
+.smartscreen u { color: #fff; font-weight: 600; text-underline-offset: 2px; }
+.smartscreen .ss-btns { display: flex; gap: 8px; justify-content: flex-end; margin-top: 12px; }
+.smartscreen .ss-btns span { padding: 5px 14px; border: 1px solid #8fb3d6; border-radius: 3px; font-size: 12.5px; }
+.smartscreen .ss-btns span.hit { background: #fff; color: #0f3a63; font-weight: 600; box-shadow: 0 0 0 3px #E2CFF6; }
+.ff { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line); }
+.ff b { color: var(--bright); }
+
+/* ---------- Questions ---------- */
+.faq-grid { margin-top: 36px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 64px; align-items: start; }
+.faq-grid h3 { color: var(--lav); font: 600 0.82rem var(--body); letter-spacing: 0.12em; text-transform: uppercase; margin: 0 0 6px; }
+.faq details { border-top: 1px solid var(--line); }
+.faq details:last-child { border-bottom: 1px solid var(--line); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 16px; padding: 16px 0; color: var(--bright); font-weight: 600; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; color: var(--lav); font: 500 1.35rem/1 var(--display); transition: transform .2s; flex: none; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq summary:hover { color: #fff; }
+.faq details p { padding: 0 0 18px; color: var(--muted); max-width: 56ch; }
+.faq details p b { color: var(--text); }
+
+/* ---------- Check your download ---------- */
+.verify { margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--muted); }
+.verify b { color: var(--text); }
+.verify .hash { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 10px 0 8px; }
+.verify .hash code { word-break: break-all; font-size: 0.82rem; padding: 6px 10px; }
+.verify button { font: 600 0.88rem var(--body); color: var(--bright); background: transparent; border: 0; box-shadow: inset 0 0 0 1px #4a4257; border-radius: 9px; padding: 7px 13px; cursor: pointer; }
+.verify button:hover { background: var(--panel-2); }
+
+/* ---------- "Your download has started": next steps ---------- */
+.ns { position: fixed; right: 22px; bottom: 22px; z-index: 60; width: 380px; max-width: calc(100vw - 32px); background: #1a1620; border: 1px solid #3a3346;
+  border-radius: 18px; padding: 20px 22px 18px; box-shadow: 0 30px 60px -20px #000; opacity: 0; transform: translateY(18px); pointer-events: none;
+  transition: opacity .3s, transform .45s cubic-bezier(.2,.8,.2,1); }
+.ns.show { opacity: 1; transform: none; pointer-events: auto; }
+.ns-kick { color: var(--lav); font: 600 0.78rem var(--body); letter-spacing: 0.12em; text-transform: uppercase; }
+.ns h3 { font-size: 1.35rem; margin: 2px 0 12px; }
+.ns ol { list-style: none; padding: 0; margin: 0; counter-reset: n; }
+.ns li { display: grid; grid-template-columns: 26px 1fr; gap: 12px; padding: 7px 0; counter-increment: n; font-size: 0.95rem; color: var(--text); }
+.ns li::before { content: counter(n); width: 24px; height: 24px; border-radius: 50%; background: var(--purple); color: #fff; font: 600 0.82rem/24px var(--display); text-align: center; }
+.ns li b { color: var(--bright); }
+.ns-close { position: absolute; right: 12px; top: 12px; width: 32px; height: 32px; border: 0; background: transparent; color: var(--muted); border-radius: 8px; cursor: pointer; font-size: 18px; }
+.ns-close:hover { background: var(--panel-2); color: var(--bright); }
+.ns-links { margin-top: 12px; font-size: 0.9rem; color: var(--muted); }
+
 /* ---------- Smaller screens ---------- */
 @media (max-width: 980px) {
   .hero-text, .split, .together { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .proof-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .proof-grid > div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .proof-grid > div:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .setup-grid, .faq-grid { grid-template-columns: minmax(0, 1fr); }
+  .setup-grid > div { padding: 28px 0; border-left: 0; border-top: 1px solid var(--line); }
+  .setup-grid > div:first-child { border-top: 0; padding-top: 0; }
+  .faq-grid > div + div { margin-top: 36px; }
   .split.flip > .copy { order: 0; }
   .get-grid { grid-template-columns: 1fr; }
   .get-grid > div { padding: 30px 0; border-left: 0; border-top: 1px solid var(--line); }
@@ -319,11 +427,17 @@ footer .brand img { width: 26px; height: 26px; }
   footer .brand { margin-right: 0; }
   .tvset .phone img { border-radius: 16px; }
   .small-things { grid-template-columns: 1fr; }
+  .proof-grid > div { padding: 18px 14px 18px 0; }
+  .proof-grid > div + div { padding-left: 14px; }
+  .proof-grid > div:nth-child(3) { padding-left: 0; }
+  .ns { right: 16px; bottom: 16px; padding: 18px 18px 16px; }
+  .quota-fit { border-radius: 16px; }
   .map, .qr { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .dot { display: none; }
+  .ns { transition: none; }
 }
 </style>
 </head>
@@ -336,7 +450,9 @@ footer .brand img { width: 26px; height: 26px; }
     <a href="#tv">TV</a>
     <a href="#pc">PC</a>
     <a href="#games">Games</a>
-    <a href="#together">Together</a>
+    <a href="#control">Limits</a>
+    <a href="#setup">Setup</a>
+    <a href="#faq">FAQ</a>
   </nav>
   <a class="btn small" href="#get">Download</a>
 </header>
@@ -352,7 +468,7 @@ footer .brand img { width: 26px; height: 26px; }
         <a class="btn" href="https://play.google.com/store/apps/details?id=com.kosh.fetchkosh">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 3.5v17a1 1 0 0 0 1.5.86l14-8.5a1 1 0 0 0 0-1.72l-14-8.5A1 1 0 0 0 5 3.5Z"/></svg>
           Get it on Google Play</a>
-        <a class="btn quiet" href="https://github.com/patilsiddhesh23/fetchkosh/releases/latest/download/FetchKosh-setup.exe">
+        <a class="btn quiet" data-win href="https://github.com/patilsiddhesh23/fetchkosh/releases/latest/download/FetchKosh-setup.exe">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5.2 10.5 4v7.5H3V5.2ZM11.7 3.8 21 2.4v9.1h-9.3V3.8ZM3 12.6h7.5V20L3 18.8v-6.2Zm8.7 0H21v9l-9.3-1.4v-7.6Z"/></svg>
           Download for Windows</a>
       </div>
@@ -406,6 +522,16 @@ footer .brand img { width: 26px; height: 26px; }
     </div>
     </div>
     <p class="demo-note">A simulation with example speeds, sped up. Switch mobile data off to see the difference. Your speeds depend on your <span class="nb">Wi-Fi</span> and your mobile network.</p>
+  </div>
+</section>
+
+<!-- ============================ Numbers ============================ -->
+<section class="wrap proof" aria-label="FetchKosh in numbers">
+  <div class="proof-grid">
+    <div><b class="num">3</b><span>connections on one file: Ethernet, <span class="nb">Wi-Fi</span> and your phone's 5G</span></div>
+    <div><b class="num">1.6<em>&times;</em></b><span>faster Steam download in our test, 26.3 to 42.9 Mbps</span></div>
+    <div><b class="num">1 GB</b><span>a day for the phone's data, or any limit you choose</span></div>
+    <div><b class="num">2 AM</b><span>Scheduled downloads start while you sleep</span></div>
   </div>
 </section>
 
@@ -512,6 +638,51 @@ footer .brand img { width: 26px; height: 26px; }
   </div>
 </section>
 
+<!-- ============================ Limits ============================ -->
+<section class="wrap part" id="control">
+  <div class="split flip">
+    <div class="copy">
+      <div class="where"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 17a8 8 0 1 1 16 0"/><path d="M12 17l4.2-5"/></svg>On your Windows PC</div>
+      <h2>Your data, your rules.</h2>
+      <p>Mobile data costs money and other people use the internet too. FetchKosh lets you decide how much of each connection it may use, and when.</p>
+      <ul class="points">
+        <li><b>A daily data limit.</b> Give your phone 1 GB a day, or any amount. When it's used up, FetchKosh carries on over <span class="nb">Wi-Fi</span>, or pauses and picks up again after midnight.</li>
+        <li><b>Speed limits.</b> For one connection or for everything, so others at home can still browse and video-call.</li>
+        <li><b>Scheduled downloads.</b> Pick a time like 2 AM for night data, a time to stop, and whether the PC sleeps or shuts down when it's done. It can even wake the PC from sleep.</li>
+        <li><b>A mini window.</b> A small card on top of your other windows shows each download with a ring, and says Completed when it's in.</li>
+      </ul>
+    </div>
+    <div class="quota-fit" id="quota-fit">
+      <div class="quota" id="quota" role="img" aria-label="A phone with a 1 GB daily limit: when the limit is reached, FetchKosh stops using the phone's data and the download carries on over Wi-Fi">
+        <span class="q-day" id="q-day" aria-hidden="true">Today</span>
+        <svg class="lines-q" viewBox="0 0 560 230" aria-hidden="true">
+          <path id="q-wifi" class="path wifi" d="M310 72 C346 72 344 117 366 117"/>
+          <path id="q-mob" class="path mob" d="M310 168 C346 168 344 117 366 117"/>
+          <path id="q-out" class="path out" d="M416 117 L540 117"/>
+          <g class="dots" data-set="q"></g>
+        </svg>
+        <div class="q-row" style="top:40px" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M2.5 9.5a14 14 0 0 1 19 0M5.8 13a9.2 9.2 0 0 1 12.4 0M9 16.4a4.6 4.6 0 0 1 6 0"/><circle cx="12" cy="19.6" r="1.1" fill="currentColor"/></svg>
+          <div><b>Wi-Fi</b><span class="st">Connected</span></div><span class="sp num" id="q-sw">4.8 MB/s</span>
+        </div>
+        <div class="q-row mob" style="top:124px" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6.5" y="2.5" width="11" height="19" rx="2.6"/><path d="M10.5 18.5h3"/></svg>
+          <div><b>Phone 5G</b><span class="st num" id="q-st">Used 640 MB of 1 GB today</span></div><span class="sp num" id="q-sm">2.3 MB/s</span>
+          <div class="meter"><i id="q-meter"></i></div>
+        </div>
+        <img class="q-logo" src="logo.png" alt="">
+        <div class="q-total" aria-hidden="true"><b class="num" id="q-tot">7.1</b><span>MB/s total</span></div>
+        <div class="q-file" aria-hidden="true">
+          <div><b>Movie-night-2160p.mkv</b><span class="num" id="q-pct">41%</span></div>
+          <div class="bar"><i id="q-bar"></i></div>
+          <div><span class="num" id="q-size">1.6 GB of 4.0 GB</span><span class="num" id="q-left"></span></div>
+        </div>
+        <div class="q-toast" id="q-toast" aria-hidden="true"><div class="toast-app"><img src="logo.png" alt="">FetchKosh</div>Phone 5G used its 1 GB for today. Downloads go on over <span class="nb">Wi-Fi</span>.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============================ Game Boost ============================ -->
 <section class="wrap part" id="games">
   <div class="split flip">
@@ -569,7 +740,7 @@ footer .brand img { width: 26px; height: 26px; }
     <div class="copy">
       <div class="where"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.8 3.8 5.8 3.8 9s-1.2 6.2-3.8 9c-2.6-2.8-3.8-5.8-3.8-9S9.4 5.8 12 3Z"/></svg>With your browser</div>
       <h2>Click download in your browser. FetchKosh takes it from there.</h2>
-      <p>The FetchKosh extension for Chrome, Edge and Brave hands your browser's downloads to the Windows app. It comes with the app, and the app shows you how to add it.</p>
+      <p>The FetchKosh extension for Chrome, Edge<span class="ff-off"> and Brave</span><span class="ff-on" hidden>, Brave and Firefox</span> hands your browser's downloads to the Windows app. It comes with the app, and the app shows you how to add it.</p>
       <ul class="points">
         <li><b>You know when it starts and when it's done.</b> "Download started" from the browser, then "Download complete" from Windows, with the file's size and folder.</li>
         <li><b>Sorted for you.</b> Videos, music, archives, programs, documents and pictures each land in their own folder.</li>
@@ -643,12 +814,80 @@ footer .brand img { width: 26px; height: 26px; }
     <div><h3>A queue you control</h3><p>Choose how many downloads run at once and drag the rest into order.</p></div>
     <div><h3>Google Drive links</h3><p>Big shared files download directly, without the "can't scan this file for viruses" page.</p></div>
     <div><h3>How much faster was it?</h3><p>After a download, see the time saved over <span class="nb">Wi-Fi</span> alone and share it as a picture.</p></div>
+    <div><h3>Link expired? Keep going</h3><p>Paste a fresh link, or click the download again in your browser, and FetchKosh continues from where it stopped.</p></div>
+    <div><h3>Check the file</h3><p>See a finished file's SHA-256 and paste the one from the website: FetchKosh tells you if it matches.</p></div>
+    <div><h3>Numbered links</h3><p>In Download many, <code>photo[001-100].jpg</code> adds all 100 links at once.</p></div>
+    <div><h3>Opens where you left it</h3><p>The Windows app comes back at the size and place you left it, maximized too.</p></div>
     <div><h3>Dark and light</h3><p>One switch at the top of the phone app.</p></div>
     <div><h3>When downloads finish</h3><p>On Windows, choose to put the PC to sleep or shut it down once everything is in. It stays awake until then.</p></div>
     <div><h3>Drag files to your phone</h3><p>Drop files from File Explorer onto the Phone page and they go over <span class="nb">Wi-Fi</span>, with no mobile data used.</p></div>
     <div><h3>Starts quietly</h3><p>With Windows, FetchKosh waits in the tray, ready for your browser downloads, without opening a window.</p></div>
     <div><h3>Updates itself</h3><p>The Windows app gets new versions by itself; the update row under Settings shows how far along it is.</p></div>
     <div><h3>Private</h3><p>No account or sign-in. Your downloads and settings stay on your devices, and a TV or PC connects only after you approve it.</p></div>
+  </div>
+</section>
+
+<!-- ============================ Setup ============================ -->
+<section class="wrap part" id="setup">
+  <h2>Set up in two minutes.</h2>
+  <div class="setup-grid">
+    <div>
+      <h3>The Windows app</h3>
+      <p class="sub">Windows 10 or 11.</p>
+      <ol class="steps">
+        <li><span><b>Run <code>FetchKosh-setup.exe</code></b> from your Downloads.</span></li>
+        <li><span><b>Windows protected your PC?</b> Click <b>More info</b>, then <b>Run anyway</b>. New apps without a paid certificate get this once.</span></li>
+        <li><span><b>FetchKosh opens</b> and finds your connections by itself.</span></li>
+      </ol>
+      <div class="smartscreen" aria-hidden="true"><b>Windows protected your PC</b><p>Microsoft Defender SmartScreen prevented an unrecognised app from starting.</p><p style="margin-top:6px"><u>More info</u></p><div class="ss-btns"><span class="hit">Run anyway</span><span>Don't run</span></div></div>
+    </div>
+    <div>
+      <h3>The browser extension</h3>
+      <p class="sub">So your browser's downloads go to FetchKosh.</p>
+      <ol class="steps">
+        <li><span>In FetchKosh, click <b>Tips</b>, then <b>Add the browser extension</b>.</span></li>
+        <li><span>It opens your browser's extensions page and shows the folder to choose. <b>Chrome, Edge and Brave</b> take about a minute.</span></li>
+        <li><span><b>Pin it</b> next to the address bar. Its button shows whether FetchKosh is ready.</span></li>
+      </ol>
+      <div class="ff" id="ff-box" hidden>
+        <p><b>Firefox:</b> add it from Firefox Add-ons in one click.</p>
+        <a class="btn small" href="https://addons.mozilla.org/firefox/addon/fetchkosh/">Add to Firefox</a>
+      </div>
+    </div>
+    <div>
+      <h3>Your phone's 5G for the PC</h3>
+      <p class="sub">Optional: one more connection for the PC.</p>
+      <ol class="steps">
+        <li><span><b>Get FetchKosh on your phone</b> from Google Play.</span></li>
+        <li><span>On the phone: <b>PC tab</b>, then switch on <b>Phone 5G for your PC</b>. Phone and PC on the same <span class="nb">Wi-Fi</span>.</span></li>
+        <li><span>The PC shows the phone. <b>Pair once</b> with the code, and set a daily data limit if you like.</span></li>
+      </ol>
+      <a class="btn small quiet" href="https://play.google.com/store/apps/details?id=com.kosh.fetchkosh">Get it on Google Play</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ Questions ============================ -->
+<section class="wrap part" id="faq">
+  <h2>Questions, answered.</h2>
+  <div class="faq-grid">
+    <div class="faq">
+      <h3>Common questions</h3>
+      <details><summary>Is FetchKosh free?</summary><p>Yes. The phone, TV and Windows apps are free, with no account or sign-in.</p></details>
+      <details><summary>Will it make my downloads faster?</summary><p>When you have more than one connection, like <span class="nb">Wi-Fi</span> plus your phone's 5G, or a server that slows each connection down. With one connection and a server that doesn't, your line's speed is the limit, and FetchKosh can't go past it.</p></details>
+      <details><summary>How much of my mobile data does it use?</summary><p>As much as you allow. Set a daily data limit, like 1 GB, and FetchKosh stops using the phone's data there and carries on over <span class="nb">Wi-Fi</span>. You can also limit its speed, or use <span class="nb">Wi-Fi</span> only.</p></details>
+      <details><summary>Does Game Boost change my games or launcher?</summary><p>No. Steam and Epic Games still download and install the game as usual; FetchKosh only fetches the pieces over your connections. Switch it off or close FetchKosh and they download the normal way again.</p></details>
+      <details><summary>Is it safe to install?</summary><p>The Windows installer comes straight from our GitHub releases, and you can check it with the SHA-256 shown under "Get FetchKosh". Windows warns about it only because it isn't signed with a paid certificate yet.</p></details>
+      <details><summary>What does FetchKosh know about me?</summary><p>Nothing it sends anywhere. Your downloads, settings and devices stay on your devices. The details are in the <a href="privacy">privacy policy</a>.</p></details>
+    </div>
+    <div class="faq">
+      <h3>If something's off</h3>
+      <details><summary>The extension says FetchKosh isn't reachable</summary><p>Start FetchKosh: it waits in the tray, next to the clock. If it is running, open the extension's button again after a few seconds.</p></details>
+      <details><summary>Downloads still go to the browser</summary><p>Turn off other download managers' browser extensions (like the IDM Integration Module): two extensions fight over the same download. Small files under 1 MB stay in the browser on purpose.</p></details>
+      <details><summary>The PC doesn't see my phone</summary><p>Phone and PC must be on the same <span class="nb">Wi-Fi</span>, with <b>Phone 5G for your PC</b> on in the phone's PC tab. If Windows asked about network access, allow it for private networks.</p></details>
+      <details><summary>Game Boost isn't faster</summary><p>Open the Game Boost tab and click <b>Check what's wrong</b>. It looks for the usual causes, like a connection that's switched off or a launcher that wasn't restarted.</p></details>
+      <details><summary>Windows says "Windows protected your PC"</summary><p>Click <b>More info</b>, then <b>Run anyway</b>. It appears once, for new apps without a paid certificate.</p></details>
+    </div>
   </div>
 </section>
 
@@ -668,7 +907,7 @@ footer .brand img { width: 26px; height: 26px; }
       <div>
         <h3>Windows PC</h3>
         <p>Windows 10 and 11, about 48 MB. It updates itself when a new version is out.</p>
-        <a class="btn" href="https://github.com/patilsiddhesh23/fetchkosh/releases/latest/download/FetchKosh-setup.exe">
+        <a class="btn" data-win href="https://github.com/patilsiddhesh23/fetchkosh/releases/latest/download/FetchKosh-setup.exe">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11M7 10.5l5 5 5-5M5 20h14"/></svg>
           Download for Windows</a>
         <p class="fine"><a href="https://github.com/patilsiddhesh23/fetchkosh/releases">All versions and release notes</a></p>
@@ -680,9 +919,27 @@ footer .brand img { width: 26px; height: 26px; }
       </div>
     </div>
     <p class="smart"><b>Windows says "Windows protected your PC"?</b> Click <b>More info</b>, then <b>Run anyway</b>. Windows shows this for new apps that aren't signed with a paid certificate yet.</p>
+    <div class="verify" id="verify" hidden>
+      <p><b>Check your download.</b> The SHA-256 of <span id="v-name">FetchKosh-setup.exe</span> (<span id="v-ver"></span>):</p>
+      <div class="hash"><code id="v-hash"></code><button type="button" id="v-copy">Copy</button></div>
+      <p>In PowerShell, <code>Get-FileHash $HOME\Downloads\FetchKosh-setup.exe</code> should show the same.</p>
+    </div>
   </div>
 </section>
 </main>
+
+<!-- "Your download has started": shown after a Windows download button is clicked -->
+<aside class="ns" id="ns" aria-live="polite" aria-hidden="true">
+  <button class="ns-close" id="ns-close" type="button" aria-label="Close">&#x2715;</button>
+  <div class="ns-kick">Your download has started</div>
+  <h3>Next steps</h3>
+  <ol>
+    <li><span>Open <code>FetchKosh-setup.exe</code> from your Downloads.</span></li>
+    <li><span>If Windows says <b>"Windows protected your PC"</b>, click <b>More info</b>, then <b>Run anyway</b>.</span></li>
+    <li><span>FetchKosh opens, finds your connections and <b>shows you how to add it to your browser</b>.</span></li>
+  </ol>
+  <p class="ns-links"><a href="#setup" id="ns-guide">Full setup guide</a> &middot; <a href="https://github.com/patilsiddhesh23/fetchkosh/releases/latest/download/FetchKosh-setup.exe">Download didn't start?</a></p>
+</aside>
 
 <footer>
   <div class="wrap">
@@ -892,9 +1149,96 @@ footer .brand img { width: 26px; height: 26px; }
   fitScene();
   if (window.ResizeObserver) new ResizeObserver(fitScene).observe(sceneFit); else window.addEventListener("resize", fitScene);
 
-  show(); pcShow(); raceShow();
+
+  // ---- Your data, your rules: the phone's data counts up to its 1 GB limit, then Wi-Fi carries on ----
+  dots("q", [["q-wifi", "wifi", 3, 2.1], ["q-mob", "mob", 3, 2.6], ["q-out", "out", 3, 1.5]]);
+  var quota = $("quota"), quotaFit = $("quota-fit");
+  var Q_WIFI = 4.8, Q_MOB = 2.3, Q_CAP = 1000, Q_FILE = 4000, Q_FAST = 18;   // MB/s, MB, demo speed-up
+  var qUsed = 640, qDone = 1640, qCapped = 0, qNext = 0;
+  function qShow() {
+    var w = wobble(Q_WIFI, 7), m = qCapped ? 0 : wobble(Q_MOB, 9), tot = w + m;
+    $("q-sw").textContent = w.toFixed(1) + " MB/s";
+    $("q-sm").textContent = qCapped ? "" : m.toFixed(1) + " MB/s";
+    $("q-st").textContent = qCapped ? "Limit reached \u00b7 back at 12:00 AM" : "Used " + Math.round(qUsed) + " MB of 1 GB today";
+    $("q-meter").style.width = Math.min(100, qUsed / Q_CAP * 100).toFixed(1) + "%";
+    $("q-tot").textContent = tot.toFixed(1);
+    $("q-bar").style.width = (100 * qDone / Q_FILE).toFixed(1) + "%";
+    $("q-pct").textContent = Math.floor(100 * qDone / Q_FILE) + "%";
+    $("q-size").textContent = size(qDone) + " of " + size(Q_FILE);
+    $("q-left").textContent = qCapped ? "over Wi-Fi" : "";
+    return [w, m];
+  }
+  function qStep() {
+    if (qNext > 0) {                      // the "next day": back to the start
+      qNext -= 0.1;
+      if (qNext <= 0) { qUsed = 640; qDone = 1640; $("q-day").textContent = "Today"; }
+      qShow(); return;
+    }
+    var sp = qShow();
+    qDone = Math.min(Q_FILE, qDone + (sp[0] + sp[1]) * 0.1 * Q_FAST);
+    if (!qCapped) {
+      qUsed += sp[1] * 0.1 * Q_FAST;
+      if (qUsed >= Q_CAP) {
+        qUsed = Q_CAP; qCapped = 7; quota.classList.add("capped"); $("q-toast").classList.add("show");
+        setTimeout(function () { $("q-toast").classList.remove("show"); }, 3800);
+      }
+    } else {
+      qCapped -= 0.1;
+      if (qCapped <= 0.1 || qDone >= Q_FILE) {   // midnight: the phone is back, its count starts again
+        qCapped = 0; qUsed = 0; qNext = 2.2; quota.classList.remove("capped"); $("q-day").textContent = "Next day"; qShow();
+      }
+    }
+  }
+  function fitQuota() {
+    var k = quotaFit.clientWidth / 560;
+    quota.style.transform = "scale(" + k + ")";
+    quotaFit.style.height = Math.ceil(336 * k) + "px";
+  }
+  fitQuota();
+  if (window.ResizeObserver) new ResizeObserver(fitQuota).observe(quotaFit); else window.addEventListener("resize", fitQuota);
+
+  // ---- Firefox: shown once FetchKosh is live on Firefox Add-ons (Mozilla's API answers 200) ----
+  if (window.fetch) {
+    fetch("https://addons.mozilla.org/api/v5/addons/addon/fetchkosh/").then(function (r) {
+      if (!r.ok) return;
+      $("ff-box").hidden = false;
+      document.querySelectorAll(".ff-on").forEach(function (e) { e.hidden = false; });
+      document.querySelectorAll(".ff-off").forEach(function (e) { e.hidden = true; });
+    }).catch(function () {});
+
+    // ---- Check your download: the newest installer's SHA-256, straight from GitHub ----
+    fetch("https://api.github.com/repos/patilsiddhesh23/fetchkosh/releases/latest").then(function (r) {
+      return r.ok ? r.json() : null;
+    }).then(function (rel) {
+      if (!rel || !rel.assets) return;
+      var a = rel.assets.filter(function (x) { return x.name === "FetchKosh-setup.exe"; })[0];
+      if (!a || !a.digest || a.digest.indexOf("sha256:") !== 0) return;
+      $("v-hash").textContent = a.digest.slice(7);
+      $("v-ver").textContent = "version " + String(rel.tag_name || "").replace(/^v/, "");
+      $("verify").hidden = false;
+    }).catch(function () {});
+  }
+  var vCopy = $("v-copy");
+  vCopy.addEventListener("click", function () {
+    var t = $("v-hash").textContent;
+    if (navigator.clipboard) navigator.clipboard.writeText(t).then(function () {
+      vCopy.textContent = "Copied"; setTimeout(function () { vCopy.textContent = "Copy"; }, 1800);
+    });
+  });
+
+  // ---- "Your download has started": next steps after a Windows download button ----
+  var ns = $("ns");
+  function nsShow(on) { ns.classList.toggle("show", on); ns.setAttribute("aria-hidden", on ? "false" : "true"); }
+  document.querySelectorAll("a[data-win]").forEach(function (a) {
+    a.addEventListener("click", function () { setTimeout(function () { nsShow(true); }, 250); });
+  });
+  $("ns-close").addEventListener("click", function () { nsShow(false); });
+  $("ns-guide").addEventListener("click", function () { nsShow(false); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") nsShow(false); });
+
+  show(); pcShow(); raceShow(); qShow();
   if (!still) {
-    setInterval(function () { step(); pcStep(); raceStep(); }, 100);
+    setInterval(function () { step(); pcStep(); raceStep(); qStep(); }, 100);
     // The scene plays while it's on screen
     if (window.IntersectionObserver) {
       var playing = false;
@@ -907,6 +1251,7 @@ footer .brand img { width: 26px; height: 26px; }
   } else {
     done = FILES[0].mb * 0.42; show();   // reduced motion: one still frame; the switch still works
     race = GAME_GB * 8000 / LANES[0]; raceShow();
+    qUsed = 1000; qCapped = 1; quota.classList.add("capped"); qShow();
     cur.style.opacity = "0"; $("toast-b").classList.add("show"); ring.style.strokeDashoffset = "0";
   }
 })();
