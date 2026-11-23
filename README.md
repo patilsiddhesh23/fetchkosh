@@ -13,14 +13,14 @@
 <p align="center">
   <a href="https://github.com/patilsiddhesh23/fetchkosh/releases/latest"><img alt="Latest Windows version" src="https://img.shields.io/github/v/release/patilsiddhesh23/fetchkosh?style=flat-square&label=Windows&color=8044C6"></a>
   <a href="https://github.com/patilsiddhesh23/fetchkosh/releases"><img alt="Downloads" src="https://img.shields.io/github/downloads/patilsiddhesh23/fetchkosh/total?style=flat-square&color=8044C6"></a>
-  <a href="https://play.google.com/store/apps/details?id=com.kosh.fetchkosh"><img alt="Get it on Google Play" src="https://img.shields.io/badge/Google%20Play-Android%20%C2%B7%20Android%20TV-8044C6?style=flat-square&logo=googleplay&logoColor=white"></a>
+  <a href="#join-the-android-test"><img alt="Google Play: Android and Android TV, in testing" src="https://img.shields.io/badge/Google%20Play-testing-8044C6?style=flat-square&logo=googleplay&logoColor=white"></a>
   <a href="https://fetchkosh.pages.dev"><img alt="Website" src="https://img.shields.io/badge/website-fetchkosh.pages.dev-8044C6?style=flat-square"></a>
   <img alt="Free" src="https://img.shields.io/badge/price-free-8044C6?style=flat-square">
 </p>
 
 <p align="center">
   <a href="https://github.com/patilsiddhesh23/fetchkosh/releases/latest/download/FetchKosh-setup.exe"><b>⬇ Download for Windows</b></a> ·
-  <a href="https://play.google.com/store/apps/details?id=com.kosh.fetchkosh"><b>▶ Get it on Google Play</b></a> ·
+  <a href="#join-the-android-test"><b>▶ Join the Android test</b></a> ·
   <a href="https://fetchkosh.pages.dev">Website</a> ·
   <a href="https://fetchkosh.pages.dev/#setup">Setup guide</a> ·
   <a href="https://fetchkosh.pages.dev/#faq">FAQ</a>
@@ -113,7 +113,7 @@ In our own test, a Steam game download went from **26.3 Mbps** over Wi-Fi alone 
 
 Your phone's mobile data becomes one more connection for the Windows app, with no hotspot to set up and no cable.
 
-1. Install **FetchKosh on your phone** from Google Play, and keep the phone on the same Wi-Fi as the PC.
+1. Install **FetchKosh on your phone** ([join the Android test](#join-the-android-test)), and keep the phone on the same Wi-Fi as the PC.
 2. On the phone, open the **PC** tab and switch on **Phone 5G for your PC**.
 3. The PC finds the phone by itself. **Pair once** with the code it shows.
 
@@ -179,9 +179,19 @@ Screen casting copies your phone's screen to the TV, picture by picture. FetchKo
 | Platform | Get it | Notes |
 |---|---|---|
 | **Windows 10 / 11** | [FetchKosh-setup.exe](https://github.com/patilsiddhesh23/fetchkosh/releases/latest/download/FetchKosh-setup.exe) | About 48 MB. Updates itself. |
-| **Android phone** | [Google Play](https://play.google.com/store/apps/details?id=com.kosh.fetchkosh) | Android 9 or newer. |
-| **Android TV** | Google Play on the TV | Search for FetchKosh. |
+| **Android phone** | [Join the test](#join-the-android-test) | Android 9 or newer. In testing on Google Play. |
+| **Android TV** | Google Play on the TV | After joining the test with the same Google account. |
 | **Browser extension** | Comes with the Windows app | In FetchKosh: **Tips → Add the browser extension**. |
+
+### Join the Android test
+
+FetchKosh for Android is in testing on Google Play. Joining takes a minute:
+
+1. **Join the group** [kosh-tester](https://groups.google.com/g/kosh-tester) with the Google account you use on your phone.
+2. **Become a tester:** open [play.google.com/apps/testing/com.kosh.fetchkosh](https://play.google.com/apps/testing/com.kosh.fetchkosh) and tap **Become a tester**.
+3. **Install** [FetchKosh from Google Play](https://play.google.com/store/apps/details?id=com.kosh.fetchkosh). It can take a few minutes after step 2 before Play shows it.
+
+Updates come through Google Play like any other app.
 
 **Windows says "Windows protected your PC"?** Click **More info**, then **Run anyway**. Windows shows this once for new apps that aren't signed with a paid certificate yet.
 
